@@ -7,10 +7,10 @@ import { Container } from '@/components/ui/Container';
 import { Eyebrow }   from '@/components/ui/Eyebrow';
 
 const VAN_IMAGES = [
-  { src: '/van/exterior.webp',   caption: 'The Party Van exterior — arrive in style' },
-  { src: '/van/interior-1.webp', caption: 'Console gaming setup inside' },
-  { src: '/van/interior-2.webp', caption: 'Multiple screens and controllers' },
-  { src: '/van/lighting.webp',   caption: 'Full LED party lighting inside' },
+  { src: '/van/exterior.webp',   caption: 'The Party Van — fully wrapped and ready to roll' },
+  { src: '/van/interior-1.webp', caption: 'Console gaming and neon atmosphere on board' },
+  { src: '/van/interior-2.webp', caption: 'Party space setup — screens, seating, and vibes' },
+  { src: '/van/lighting.webp',   caption: 'Full LED party lighting — every event glows' },
 ];
 
 export function PartyVanTour() {
