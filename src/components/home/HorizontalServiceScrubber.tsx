@@ -9,10 +9,10 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 const PANEL_PHOTOS: Record<string, string> = {
   'gaming-lounge':  '/lounge/kids-neon.jpg',
   'vr-rental':      '/vr/kid-vr-neon.jpg',
-  'outdoor-movies': '/gallery/photo-04.jpg',
-  'party-van':      '/van/exterior.png',
-  'silent-disco':   '/gallery/photo-03.jpg',
-  'after-school':   '/gallery/photo-07.jpg',
+  'outdoor-movies': '/gallery/photo-27.jpg',
+  'party-van':      '/gallery/photo-25.jpg',
+  'silent-disco':   '/gallery/photo-13.jpg',
+  'after-school':   '/gallery/photo-14.jpg',
 };
 
 const BG_COLORS: Record<string, string> = {
