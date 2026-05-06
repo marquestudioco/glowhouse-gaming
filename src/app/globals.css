@@ -1,6 +1,26 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+/* Clash Display — self-hosted. Place woff2 files in public/fonts/ to activate. Falls back to Georgia. */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
 @theme {
   --color-bg-deep:      #0A0612;
   --color-bg-elevated:  #14101F;
