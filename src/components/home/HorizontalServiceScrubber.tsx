@@ -1,9 +1,19 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { SERVICES, type Service } from '@/lib/data/services';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+
+const PANEL_PHOTOS: Record<string, string> = {
+  'gaming-lounge':  '/lounge/kids-neon.jpg',
+  'vr-rental':      '/vr/kid-vr-neon.jpg',
+  'outdoor-movies': '/gallery/photo-04.jpg',
+  'party-van':      '/van/exterior.png',
+  'silent-disco':   '/gallery/photo-03.jpg',
+  'after-school':   '/gallery/photo-07.jpg',
+};
 
 const BG_COLORS: Record<string, string> = {
   'gaming-lounge':  'radial-gradient(ellipse at 30% 50%, rgba(0,229,255,0.15) 0%, transparent 70%)',
@@ -29,6 +39,19 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
       className="relative flex-shrink-0 flex flex-col justify-center"
       style={{ width: '100vw', height: '100vh', background: 'var(--bg-deep)', overflow: 'clip' }}
     >
+      {/* Real photo — right half, faded into bg */}
+      <div aria-hidden className="absolute right-0 top-0 w-1/2 h-full pointer-events-none" style={{ opacity: 0.18 }}>
+        <Image
+          src={PANEL_PHOTOS[service.id]}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="50vw"
+          loading="lazy"
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, var(--bg-deep) 0%, transparent 40%, transparent 100%)' }} />
+      </div>
+
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"

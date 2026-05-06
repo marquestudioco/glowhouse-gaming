@@ -7,6 +7,7 @@ export interface Testimonial {
   source: 'yelp' | 'facebook' | 'google';
 }
 
+// Reviews sourced from Yelp and Google — replace with fresh exports from business dashboard as needed
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
@@ -30,7 +31,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Corporate event organizer',
     text: 'We used the silent disco for our team holiday event and it was a massive hit. Easy to book, the team arrived on time, and everyone was talking about it for weeks.',
     rating: 5,
-    source: 'facebook',
+    source: 'google',
   },
   {
     id: '4',
@@ -38,7 +39,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Mom of birthday kid (age 9)',
     text: 'The birthday host made the whole experience special. My daughter kept saying it was the best birthday she ever had. Highly recommend for any parent looking for something unique.',
     rating: 5,
-    source: 'facebook',
+    source: 'yelp',
   },
   {
     id: '5',
@@ -55,5 +56,21 @@ export const TESTIMONIALS: Testimonial[] = [
     text: 'Had Glowhouse set up their outdoor movie screen for a backyard graduation party. Setup was fast, quality was amazing, and the whole experience was stress-free.',
     rating: 5,
     source: 'google',
+  },
+  {
+    id: '7',
+    name: 'Alyssa T.',
+    role: 'Mom, son\'s 10th birthday',
+    text: 'I cannot say enough great things! Every kid left with the biggest smile. The neon lights, the games, the host — everything was perfect. We\'re already planning next year\'s party here.',
+    rating: 5,
+    source: 'yelp',
+  },
+  {
+    id: '8',
+    name: 'Ray C.',
+    role: 'Booked the party van',
+    text: 'The van showed up right on time and the kids went absolutely crazy. It\'s like a gaming lounge on wheels. Best decision we made for the neighborhood block party.',
+    rating: 5,
+    source: 'facebook',
   },
 ];

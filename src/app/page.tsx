@@ -8,6 +8,7 @@ import { PackagesTeaser }            from '@/components/home/PackagesTeaser';
 import { PhotoMosaic }               from '@/components/home/PhotoMosaic';
 import { TestimonialMarquee }        from '@/components/home/TestimonialMarquee';
 import { AboutTeaser }               from '@/components/home/AboutTeaser';
+import { FeaturedGames }             from '@/components/home/FeaturedGames';
 import { FaqSnippet }                from '@/components/home/FaqSnippet';
 import { CtaBand }                   from '@/components/home/CtaBand';
 
@@ -27,6 +28,7 @@ export default function Home() {
       <BirthdaySpotlight />
       <PackagesTeaser />
       <PhotoMosaic />
+      <FeaturedGames />
       <TestimonialMarquee />
       <AboutTeaser />
       <FaqSnippet />

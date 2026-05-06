@@ -8,15 +8,15 @@ import { Container } from '@/components/ui/Container';
 import { Eyebrow }   from '@/components/ui/Eyebrow';
 
 const GALLERY_IMAGES = [
-  { src: '/gallery/photo-01.webp', alt: 'Kids gaming in neon-lit lounge',     aspect: 'landscape' },
-  { src: '/gallery/photo-02.webp', alt: 'Birthday party group celebrating',    aspect: 'portrait'  },
-  { src: '/gallery/photo-03.webp', alt: 'VR experience in action',             aspect: 'square'    },
-  { src: '/gallery/photo-04.webp', alt: 'Outdoor movie night setup',           aspect: 'landscape' },
-  { src: '/gallery/photo-05.webp', alt: 'Party van exterior glowing',          aspect: 'portrait'  },
-  { src: '/gallery/photo-06.webp', alt: 'Silent disco headphone dance party',  aspect: 'landscape' },
-  { src: '/gallery/photo-07.webp', alt: 'After school club kids at consoles',  aspect: 'square'    },
-  { src: '/gallery/photo-08.webp', alt: 'Birthday cake and gaming setup',      aspect: 'portrait'  },
-  { src: '/gallery/photo-09.webp', alt: 'Competition stage with LED lighting', aspect: 'landscape' },
+  { src: '/gallery/photo-01.webp', alt: 'Kid experiencing VR in neon pink light',         aspect: 'portrait'  },
+  { src: '/gallery/photo-02.webp', alt: 'Group of kids gaming at neon-lit PC stations',   aspect: 'landscape' },
+  { src: '/gallery/photo-03.jpg',  alt: 'Venue interior with pink neon "it\'s a vibe" sign', aspect: 'landscape' },
+  { src: '/gallery/photo-04.jpg',  alt: 'Full party room setup — chairs, projector, neon lighting', aspect: 'landscape' },
+  { src: '/gallery/photo-05.webp', alt: 'Glowhouse Gaming party van with outdoor screen', aspect: 'landscape' },
+  { src: '/gallery/photo-06.jpg',  alt: 'Kid gaming with neon tube lights behind them',   aspect: 'portrait'  },
+  { src: '/gallery/photo-07.jpg',  alt: 'Family enjoying gaming event together',          aspect: 'square'    },
+  { src: '/gallery/photo-08.webp', alt: 'Birthday party cake and balloon decorations',    aspect: 'square'    },
+  { src: '/gallery/photo-09.webp', alt: 'Kid playing games at Glowhouse Gaming lounge',  aspect: 'portrait'  },
 ];
 
 export function PhotoMosaic() {

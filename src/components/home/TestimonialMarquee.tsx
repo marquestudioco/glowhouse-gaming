@@ -3,15 +3,33 @@ import { Container }   from '@/components/ui/Container';
 import { Eyebrow }     from '@/components/ui/Eyebrow';
 import { Star }        from 'lucide-react';
 
+const SOURCE_LABEL: Record<string, string> = {
+  yelp: 'Yelp',
+  google: 'Google',
+  facebook: 'Facebook',
+};
+const SOURCE_COLOR: Record<string, string> = {
+  yelp: '#FF1A1A',
+  google: '#4285F4',
+  facebook: '#1877F2',
+};
+
 function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
   return (
-    <div className="flex-shrink-0 w-80 p-5 mx-3 rounded-2xl border border-white/5 bg-[var(--bg-elevated)]">
-      <div className="flex gap-0.5 mb-3">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} size={12} fill="var(--neon-cyan)" color="var(--neon-cyan)" />
-        ))}
+    <div className="flex-shrink-0 w-[22rem] p-6 mx-3 rounded-2xl border border-white/5 bg-[var(--bg-elevated)] flex flex-col gap-4"
+      style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.3)' }}>
+      <div className="flex items-center justify-between">
+        <div className="flex gap-0.5">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star key={i} size={13} fill="var(--neon-cyan)" color="var(--neon-cyan)" />
+          ))}
+        </div>
+        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+          style={{ color: SOURCE_COLOR[t.source], background: SOURCE_COLOR[t.source] + '18' }}>
+          {SOURCE_LABEL[t.source]}
+        </span>
       </div>
-      <p className="text-sm text-[var(--text-dim)] leading-relaxed mb-4">"{t.text}"</p>
+      <p className="text-sm text-[var(--text-dim)] leading-relaxed flex-1">"{t.text}"</p>
       <div>
         <p className="text-sm font-semibold text-[var(--text-light)]">{t.name}</p>
         <p className="text-xs text-[var(--text-dim)]">{t.role}</p>
@@ -45,7 +63,7 @@ export function TestimonialMarquee() {
           style={{
             display: 'flex',
             width: 'max-content',
-            animation: 'marqueeScroll 50s linear infinite',
+            animation: 'marqueeScroll 30s linear infinite',
           }}
         >
           {tripled.map((t, i) => (
