@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, Phone } from 'lucide-react';
 
 const NAV_LINKS = [
@@ -33,8 +34,15 @@ export function Nav() {
       ].join(' ')}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold tracking-widest uppercase text-[var(--text-light)]">
-          <span style={{ color: 'var(--neon-cyan)' }}>Glow</span>house Gaming
+        <Link href="/" className="flex items-center" aria-label="Glowhouse Gaming — home">
+          <Image
+            src="/logo.png"
+            alt="Glowhouse Gaming"
+            width={1268}
+            height={952}
+            style={{ height: '56px', width: 'auto' }}
+            priority
+          />
         </Link>
 
         {/* Desktop nav links */}
