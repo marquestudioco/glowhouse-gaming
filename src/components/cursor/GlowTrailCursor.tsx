@@ -43,32 +43,44 @@ export function GlowTrailCursor() {
     document.addEventListener('mouseover', onMouseOver);
     document.addEventListener('mouseout',  onMouseOut);
 
-    const bindMagnetic = () => {
-      document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(el => {
-        const clone = el.cloneNode(true) as HTMLElement;
-        el.replaceWith(clone);
+    // Track which elements have magnetic listeners to avoid rebinding
+    const bound = new WeakSet<HTMLElement>();
+
+    const bindEl = (el: HTMLElement) => {
+      if (bound.has(el)) return;
+      bound.add(el);
+      el.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = el.getBoundingClientRect();
+        const cx   = rect.left + rect.width / 2;
+        const cy   = rect.top  + rect.height / 2;
+        const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+        if (dist < 80) {
+          const pull = (1 - dist / 80) * 0.28;
+          gsap.to(el, { x: (e.clientX - cx) * pull, y: (e.clientY - cy) * pull, duration: 0.3, ease: 'power2.out' });
+        }
       });
-      document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(el => {
-        const onElMove = (e: MouseEvent) => {
-          const rect = el.getBoundingClientRect();
-          const cx   = rect.left + rect.width / 2;
-          const cy   = rect.top  + rect.height / 2;
-          const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-          if (dist < 80) {
-            const pull = (1 - dist / 80) * 0.28;
-            gsap.to(el, { x: (e.clientX - cx) * pull, y: (e.clientY - cy) * pull, duration: 0.3, ease: 'power2.out' });
-          }
-        };
-        const onElLeave = () => {
-          gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
-        };
-        el.addEventListener('mousemove', onElMove);
-        el.addEventListener('mouseleave', onElLeave);
+      el.addEventListener('mouseleave', () => {
+        gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
       });
     };
 
-    bindMagnetic();
-    const observer = new MutationObserver(bindMagnetic);
+    const bindAll = () => {
+      document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(bindEl);
+    };
+
+    bindAll();
+
+    // Watch for newly added magnetic elements only — never modify DOM here
+    const observer = new MutationObserver(mutations => {
+      for (const m of mutations) {
+        m.addedNodes.forEach(node => {
+          if (node instanceof HTMLElement) {
+            if (node.matches('[data-magnetic]')) bindEl(node);
+            node.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(bindEl);
+          }
+        });
+      }
+    });
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
