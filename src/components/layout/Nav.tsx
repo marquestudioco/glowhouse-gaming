@@ -36,7 +36,7 @@ export function Nav() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="Glowhouse Gaming — home">
           <Image
-            src="/logo.png"
+            src="/logo-color.png"
             alt="Glowhouse Gaming"
             width={1268}
             height={952}

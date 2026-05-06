@@ -69,11 +69,22 @@ export function CinematicHero() {
         </div>
       ))}
 
+      {/* Brand gradient — magenta left → violet center → cyan right, matches logo */}
       <div
         aria-hidden
         className="absolute inset-0 z-[1]"
         style={{
-          background: 'linear-gradient(to bottom, rgba(10,6,18,0.7) 0%, rgba(10,6,18,0.4) 50%, rgba(10,6,18,0.85) 100%)',
+          background: 'linear-gradient(105deg, rgba(255,46,147,0.22) 0%, rgba(123,44,191,0.14) 45%, rgba(0,229,255,0.20) 100%)',
+          mixBlendMode: 'screen',
+        }}
+      />
+
+      {/* Dark vignette — keeps text readable */}
+      <div
+        aria-hidden
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(10,6,18,0.55) 0%, rgba(10,6,18,0.25) 50%, rgba(10,6,18,0.80) 100%)',
         }}
       />
 
