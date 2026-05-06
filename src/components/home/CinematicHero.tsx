@@ -74,8 +74,7 @@ export function CinematicHero() {
         aria-hidden
         className="absolute inset-0 z-[1]"
         style={{
-          background: 'linear-gradient(105deg, rgba(255,46,147,0.22) 0%, rgba(123,44,191,0.14) 45%, rgba(0,229,255,0.20) 100%)',
-          mixBlendMode: 'screen',
+          background: 'linear-gradient(105deg, rgba(255,46,147,0.38) 0%, rgba(123,44,191,0.18) 45%, rgba(0,229,255,0.32) 100%)',
         }}
       />
 
@@ -84,7 +83,7 @@ export function CinematicHero() {
         aria-hidden
         className="absolute inset-0 z-[1]"
         style={{
-          background: 'linear-gradient(to bottom, rgba(10,6,18,0.55) 0%, rgba(10,6,18,0.25) 50%, rgba(10,6,18,0.80) 100%)',
+          background: 'linear-gradient(to bottom, rgba(10,6,18,0.60) 0%, rgba(10,6,18,0.20) 50%, rgba(10,6,18,0.80) 100%)',
         }}
       />
 
