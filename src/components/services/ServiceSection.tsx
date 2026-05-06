@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { type Service } from '@/lib/data/services';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Container } from '@/components/ui/Container';
+import { ServicePhotoGallery } from './ServicePhotoGallery';
+import { YouTubeEmbed } from './YouTubeEmbed';
 
 interface Props {
   service: Service;
@@ -67,6 +69,21 @@ export function ServiceSection({ service, index }: Props) {
             </div>
           </div>
         </div>
+
+        {/* Media extras — gallery and/or YouTube embed */}
+        {service.youtubeId && (
+          <YouTubeEmbed
+            videoId={service.youtubeId}
+            title="See it in action"
+            accentColor={service.accentColor}
+          />
+        )}
+        {service.gallery && service.gallery.length > 0 && (
+          <ServicePhotoGallery
+            photos={service.gallery}
+            accentColor={service.accentColor}
+          />
+        )}
       </Container>
     </section>
   );

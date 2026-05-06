@@ -6,6 +6,11 @@ export type ServiceId =
   | 'silent-disco'
   | 'after-school';
 
+export interface ServicePhoto {
+  src: string;
+  alt: string;
+}
+
 export interface Service {
   id: ServiceId;
   name: string;
@@ -18,6 +23,8 @@ export interface Service {
   duration: string;
   indoor: boolean;
   mobileService: boolean;
+  gallery?: ServicePhoto[];
+  youtubeId?: string;
 }
 
 export const SERVICES: Service[] = [
@@ -33,6 +40,18 @@ export const SERVICES: Service[] = [
     duration: '2 hours',
     indoor: true,
     mobileService: false,
+    gallery: [
+      { src: '/lounge/photo-1.jpg',  alt: 'Glowhouse Gaming team with LED headphones at party' },
+      { src: '/lounge/photo-2.jpg',  alt: 'Kids gaming in neon-lit lounge' },
+      { src: '/lounge/photo-3.jpg',  alt: 'Birthday party setup inside the gaming lounge' },
+      { src: '/lounge/photo-4.jpg',  alt: 'Guests enjoying the Glowhouse gaming lounge' },
+      { src: '/lounge/photo-5.jpg',  alt: 'Console gaming party with neon lighting' },
+      { src: '/lounge/photo-6.jpg',  alt: 'Fun group gaming session at Glowhouse' },
+      { src: '/lounge/photo-7.jpg',  alt: 'Lounge birthday party with colorful lights' },
+      { src: '/lounge/photo-8.jpg',  alt: 'Kids competing on gaming screens' },
+      { src: '/lounge/photo-9.jpg',  alt: 'Neon gaming atmosphere at Glowhouse Gaming' },
+      { src: '/lounge/photo-10.jpg', alt: 'Party guests having a blast at the lounge' },
+    ],
   },
   {
     id: 'vr-rental',
@@ -59,6 +78,13 @@ export const SERVICES: Service[] = [
     duration: 'Flexible',
     indoor: false,
     mobileService: true,
+    gallery: [
+      { src: '/outdoor/photo-1.jpg', alt: 'Drive-In Movie Night event at Castaic Lake' },
+      { src: '/outdoor/photo-2.jpg', alt: 'Outdoor movie screen setup under the night sky' },
+      { src: '/outdoor/photo-3.jpg', alt: 'Families enjoying an outdoor movie night event' },
+      { src: '/outdoor/photo-4.jpg', alt: 'Big screen projection at an outdoor event' },
+      { src: '/outdoor/photo-5.jpg', alt: 'Glowhouse outdoor cinema experience' },
+    ],
   },
   {
     id: 'party-van',
@@ -85,6 +111,16 @@ export const SERVICES: Service[] = [
     duration: 'Flexible',
     indoor: false,
     mobileService: true,
+    gallery: [
+      { src: '/silent-disco/photo-1.jpg', alt: 'Guests wearing silent disco LED headphones at party' },
+      { src: '/silent-disco/photo-3.jpg', alt: 'Silent disco event with colorful headphone lights' },
+      { src: '/silent-disco/photo-4.jpg', alt: 'Everyone dancing at a Glowhouse silent disco' },
+      { src: '/silent-disco/photo-5.jpg', alt: 'Silent disco birthday party with LED wristbands' },
+      { src: '/silent-disco/photo-6.jpg', alt: 'Group dancing in silent disco headphones' },
+      { src: '/silent-disco/photo-7.jpg', alt: 'Silent disco crowd enjoying the event' },
+      { src: '/silent-disco/photo-8.jpg', alt: 'Kids and adults at a Glowhouse silent disco' },
+      { src: '/silent-disco/photo-9.jpg', alt: 'Silent disco party with neon headphone glow' },
+    ],
   },
   {
     id: 'after-school',
