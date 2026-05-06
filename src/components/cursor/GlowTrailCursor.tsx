@@ -17,12 +17,22 @@ export function GlowTrailCursor() {
     dot.style.display   = 'block';
     trail.style.display = 'block';
 
+    // Let GSAP own the full transform (xPercent/yPercent for centering + x/y for position)
+    gsap.set(dot,   { xPercent: -50, yPercent: -50, opacity: 0 });
+    gsap.set(trail, { xPercent: -50, yPercent: -50, opacity: 0 });
+
     const dotX   = gsap.quickTo(dot,   'x', { duration: 0.08, ease: 'power3.out' });
     const dotY   = gsap.quickTo(dot,   'y', { duration: 0.08, ease: 'power3.out' });
     const trailX = gsap.quickTo(trail, 'x', { duration: 0.25, ease: 'power3.out' });
     const trailY = gsap.quickTo(trail, 'y', { duration: 0.25, ease: 'power3.out' });
 
+    let firstMove = true;
     const onMouseMove = (e: MouseEvent) => {
+      if (firstMove) {
+        firstMove = false;
+        gsap.to(dot,   { opacity: 1, duration: 0.3 });
+        gsap.to(trail, { opacity: 0.5, duration: 0.3 });
+      }
       dotX(e.clientX); dotY(e.clientY);
       trailX(e.clientX); trailY(e.clientY);
     };
@@ -103,7 +113,6 @@ export function GlowTrailCursor() {
           width: 8, height: 8,
           borderRadius: '50%',
           background: 'var(--neon-cyan)',
-          transform: 'translate(-50%, -50%)',
           pointerEvents: 'none',
           zIndex: 9999,
           boxShadow: 'var(--glow-cyan)',
@@ -119,10 +128,8 @@ export function GlowTrailCursor() {
           width: 32, height: 32,
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(0,229,255,0.4) 0%, rgba(255,46,147,0.2) 50%, transparent 70%)',
-          transform: 'translate(-50%, -50%)',
           pointerEvents: 'none',
           zIndex: 9998,
-          opacity: 0.5,
           filter: 'blur(6px)',
         }}
       />
