@@ -1,18 +1,66 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { NeonLineDrawWordmark } from './NeonLineDrawWordmark';
 import { DatePickerHero }      from './DatePickerHero';
 
+// Abstract gradient scenes — all use the logo's magenta → violet → cyan palette
 const SCENES = [
-  { src: '/hero/scene-1.webp', label: 'Gaming Lounge', bg: 'rgba(0,229,255,0.15)' },
-  { src: '/hero/scene-2.webp', label: 'VR Experience', bg: 'rgba(0,229,255,0.12)' },
-  { src: '/hero/scene-3.webp', label: 'Outdoor Movies', bg: 'rgba(255,46,147,0.15)' },
-  { src: '/hero/scene-4.webp', label: 'Party Van',      bg: 'rgba(123,44,191,0.15)' },
-  { src: '/hero/scene-5.webp', label: 'Silent Disco',   bg: 'rgba(255,46,147,0.12)' },
-  { src: '/hero/scene-6.webp', label: 'After School',   bg: 'rgba(123,44,191,0.12)' },
+  {
+    label: 'Gaming Lounge',
+    bg: `
+      radial-gradient(ellipse 90% 80% at 10% 55%, rgba(255,46,147,0.50) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 80% 40%, rgba(0,229,255,0.28) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 65% at 50% 75%, rgba(123,44,191,0.32) 0%, transparent 60%),
+      #0A0612
+    `,
+  },
+  {
+    label: 'VR Experience',
+    bg: `
+      radial-gradient(ellipse 80% 80% at 88% 50%, rgba(0,229,255,0.50) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 12% 45%, rgba(255,46,147,0.28) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 65% at 50% 30%, rgba(123,44,191,0.32) 0%, transparent 60%),
+      #0A0612
+    `,
+  },
+  {
+    label: 'Outdoor Movies',
+    bg: `
+      radial-gradient(ellipse 70% 80% at 20% 50%, rgba(255,46,147,0.42) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,229,255,0.38) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 60% at 50% 55%, rgba(123,44,191,0.38) 0%, transparent 60%),
+      #0A0612
+    `,
+  },
+  {
+    label: 'Party Van',
+    bg: `
+      radial-gradient(ellipse 100% 60% at 50% 100%, rgba(123,44,191,0.45) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 70% at 15% 40%, rgba(255,46,147,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 85% 35%, rgba(0,229,255,0.30) 0%, transparent 55%),
+      #0A0612
+    `,
+  },
+  {
+    label: 'Silent Disco',
+    bg: `
+      radial-gradient(ellipse 80% 90% at 25% 60%, rgba(255,46,147,0.46) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 70% at 75% 40%, rgba(0,229,255,0.42) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 50% at 50% 20%, rgba(123,44,191,0.28) 0%, transparent 55%),
+      #0A0612
+    `,
+  },
+  {
+    label: 'After School',
+    bg: `
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(123,44,191,0.48) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 60% at 5% 50%, rgba(255,46,147,0.32) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 60% at 95% 50%, rgba(0,229,255,0.32) 0%, transparent 50%),
+      #0A0612
+    `,
+  },
 ];
 
 const HEADLINE_WORDS = ['Where', 'birthdays', 'go', 'to', 'glow.'];
@@ -44,46 +92,22 @@ export function CinematicHero() {
       className="relative flex items-center justify-center"
       style={{ height: '100svh', overflow: 'clip' }}
     >
+      {/* Abstract gradient scenes — cycle through logo palette compositions */}
       {SCENES.map((scene, i) => (
         <div
-          key={scene.src}
+          key={scene.label}
           aria-hidden
           className="absolute inset-0 transition-opacity duration-1000"
-          style={{ opacity: i === activeScene ? 1 : 0, zIndex: 0 }}
-        >
-          <Image
-            src={scene.src}
-            alt=""
-            fill
-            priority={i === 0}
-            fetchPriority={i === 0 ? 'high' : 'auto'}
-            decoding={i === 0 ? 'sync' : 'async'}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: scene.bg }}
-          />
-        </div>
+          style={{ opacity: i === activeScene ? 1 : 0, background: scene.bg }}
+        />
       ))}
 
-      {/* Brand gradient — magenta left → violet center → cyan right, matches logo */}
+      {/* Dark vignette — top/bottom fade keeps text crisp */}
       <div
         aria-hidden
         className="absolute inset-0 z-[1]"
         style={{
-          background: 'linear-gradient(105deg, rgba(255,46,147,0.38) 0%, rgba(123,44,191,0.18) 45%, rgba(0,229,255,0.32) 100%)',
-        }}
-      />
-
-      {/* Dark vignette — keeps text readable */}
-      <div
-        aria-hidden
-        className="absolute inset-0 z-[1]"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(10,6,18,0.60) 0%, rgba(10,6,18,0.20) 50%, rgba(10,6,18,0.80) 100%)',
+          background: 'linear-gradient(to bottom, rgba(10,6,18,0.55) 0%, rgba(10,6,18,0.05) 45%, rgba(10,6,18,0.75) 100%)',
         }}
       />
 
