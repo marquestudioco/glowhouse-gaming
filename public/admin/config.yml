@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: marquestudioco/glowhouse-gaming
+  branch: main
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: testimonials
+    label: Testimonials
+    folder: src/lib/data/cms/testimonials
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: id,     label: ID,    widget: string }
+      - { name: name,   label: Name,  widget: string }
+      - { name: role,   label: Role,  widget: string }
+      - { name: text,   label: Quote, widget: text }
+      - { name: source, label: Source, widget: select, options: [yelp, facebook, google] }
+
+  - name: faq
+    label: FAQ Items
+    folder: src/lib/data/cms/faq
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: id,       label: ID,       widget: string }
+      - { name: question, label: Question, widget: string }
+      - { name: answer,   label: Answer,   widget: text }
+      - { name: category, label: Category, widget: select, options: [booking, birthday, mobile, afterschool] }
+
+  - name: settings
+    label: Site Settings
+    files:
+      - name: contact
+        label: Contact Info
+        file: src/lib/data/cms/settings/contact.json
+        fields:
+          - { name: phone,        label: Phone,            widget: string }
+          - { name: address,      label: Address,          widget: string }
+          - { name: hoursWeekday, label: Hours (Weekday),  widget: string }
+          - { name: hoursWeekend, label: Hours (Weekend),  widget: string }

@@ -9,6 +9,7 @@ import { StickyMobileCTA }        from '@/components/layout/StickyMobileCTA';
 import { RouteTransitionCurtain } from '@/components/layout/RouteTransitionCurtain';
 import { AccessibilityMenu }      from '@/components/layout/AccessibilityMenu';
 import { GlowTrailCursor }        from '@/components/cursor/GlowTrailCursor';
+import { ChatWidget }             from '@/components/chat/ChatWidget';
 
 const geistSans = Geist({
   variable: '--font-geist',
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <StickyMobileCTA />
           <AccessibilityMenu />
+          <ChatWidget />
         </SmoothScroll>
       </body>
     </html>

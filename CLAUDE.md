@@ -49,16 +49,16 @@ npm run cf:build && npm run cf:deploy
 
 ## Pages
 
-- [ ] Home
-- [ ] Birthday Parties
-- [ ] Services
-- [ ] After School Club
-- [ ] Gallery
-- [ ] About
-- [ ] Contact
-- [ ] Book (booking form)
-- [ ] Privacy
-- [ ] Terms
+- [x] Home
+- [x] Birthday Parties
+- [x] Services
+- [x] After School Club
+- [x] Gallery
+- [x] About
+- [x] Contact
+- [x] Book (booking form — 3-step wizard)
+- [x] Privacy
+- [x] Terms
 
 ---
 
@@ -108,7 +108,17 @@ npm run cf:build && npm run cf:deploy
 
 ## Current State
 
-**Status:** build
-**Last completed:** Task 1 Step 1 — Next.js 16 scaffolded
-**Next up:** Install all project dependencies (Task 1 Step 2)
-**Known issues:** none
+**Status:** deployed
+**Last completed:** Full site build — all pages, booking wizard, AI chat (Sparks), Decap CMS, deployed to Cloudflare
+**Live URL:** https://glowhouse-gaming.marquestudio.workers.dev
+**Custom domain:** TBD — point glowhousegaming.com DNS to Cloudflare dashboard → Workers → glowhouse-gaming → Domains & Routes
+**Tests:** 23 Playwright E2E + 11 Vitest unit — all passing
+**Next up (owner actions):**
+  - Replace placeholder images with real photos (public/birthday/, public/van/, public/about/, public/gallery/)
+  - Add real pricing to package data (src/lib/data/packages.ts)
+  - Set production secrets: `wrangler secret put ANTHROPIC_API_KEY` / `RESEND_API_KEY` / `OWNER_NOTIFY_EMAIL`
+  - Configure custom domain in Cloudflare dashboard
+  - Complete Decap CMS GitHub OAuth app (see public/admin/config.yml)
+**Known issues:**
+  - Booking form and chat widget work in demo mode without API keys (graceful fallback)
+  - Placeholder images (webp) — site renders correctly with fallback colors

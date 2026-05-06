@@ -100,3 +100,8 @@ body {
 .neon-card-cyan:hover  { border-color: var(--neon-cyan);    box-shadow: var(--glow-cyan); }
 .neon-card-magenta:hover { border-color: var(--neon-magenta); box-shadow: var(--glow-magenta); }
 .neon-card-violet:hover  { border-color: var(--neon-violet);  box-shadow: var(--glow-violet); }
+
+/* Marquee pause for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation-play-state: paused !important; }
+}
