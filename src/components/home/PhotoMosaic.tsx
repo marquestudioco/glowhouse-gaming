@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ZoomIn } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Eyebrow }   from '@/components/ui/Eyebrow';
 
@@ -55,7 +55,12 @@ export function PhotoMosaic() {
                   />
                 </div>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(to top, rgba(255,46,147,0.15) 0%, transparent 60%)' }} />
+                  style={{ background: 'linear-gradient(to top, rgba(255,46,147,0.2) 0%, transparent 60%)' }} />
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                  <div className="p-2 rounded-full bg-black/60 backdrop-blur-sm text-white border border-white/20">
+                    <ZoomIn size={14} />
+                  </div>
+                </div>
               </div>
             </motion.figure>
           ))}

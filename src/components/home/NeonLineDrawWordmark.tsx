@@ -10,12 +10,6 @@ export function NeonLineDrawWordmark({ onComplete }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const el = wrapRef.current;
-      if (el) el.style.opacity = '1';
-      onComplete?.();
-      return;
-    }
     const timer = setTimeout(() => onComplete?.(), 1800);
     return () => clearTimeout(timer);
   }, [onComplete]);

@@ -37,6 +37,7 @@ export function Nav() {
           <span style={{ color: 'var(--neon-cyan)' }}>Glow</span>house Gaming
         </Link>
 
+        {/* Desktop nav links */}
         <ul className="hidden lg:flex items-center gap-6">
           {NAV_LINKS.map(({ href, label, highlight }) => (
             <li key={href}>
@@ -65,13 +66,25 @@ export function Nav() {
           </li>
         </ul>
 
-        <button
-          onClick={() => setMenuOpen(v => !v)}
-          className="lg:hidden text-[var(--text-light)] p-2"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-        >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* Right side: Book Now (always visible) + hamburger */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/book"
+            className="px-5 py-2 rounded-full text-sm font-bold text-white transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+            style={{ background: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-violet))' }}
+            data-magnetic
+          >
+            <span className="hidden sm:inline">Book Now</span>
+            <span className="sm:hidden">Book</span>
+          </Link>
+          <button
+            onClick={() => setMenuOpen(v => !v)}
+            className="lg:hidden text-[var(--text-light)] p-2"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       {menuOpen && (

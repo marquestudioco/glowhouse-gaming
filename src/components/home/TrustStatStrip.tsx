@@ -1,3 +1,6 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import { CountUp } from '@/components/ui/CountUp';
 
 const STATS = [
@@ -12,14 +15,21 @@ export function TrustStatStrip() {
     <section className="py-10 border-y border-white/5" style={{ background: 'var(--bg-elevated)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          {STATS.map((stat) => (
-            <div key={stat.label}>
+          {STATS.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, amount: 0.5 }}
+            >
               <p
                 className="font-display font-bold mb-1"
                 style={{
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
                   color: 'var(--neon-cyan)',
                   fontFamily: "'Clash Display', Georgia, serif",
+                  textShadow: '0 0 20px rgba(0,229,255,0.3)',
                 }}
               >
                 {stat.display ?? (
@@ -27,7 +37,7 @@ export function TrustStatStrip() {
                 )}
               </p>
               <p className="text-xs uppercase tracking-widest text-[var(--text-dim)]">{stat.label}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

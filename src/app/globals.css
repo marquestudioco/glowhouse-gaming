@@ -95,6 +95,30 @@ body {
 @keyframes curtainIn  { from { transform: translateY(100%); } to { transform: translateY(0%); } }
 @keyframes curtainOut { from { transform: translateY(0%); }   to { transform: translateY(-100%); } }
 
+/* Scroll indicator bounce */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+@keyframes scrollDot {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50%       { opacity: 0.3; transform: translateY(4px); }
+}
+
+/* Neon shimmer sweep */
+@keyframes neonShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Floating particle */
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+}
+
 /* Neon card edge glow on hover */
 .neon-card-cyan  { border-color: transparent; transition: border-color 0.3s, box-shadow 0.3s; }
 .neon-card-cyan:hover  { border-color: var(--neon-cyan);    box-shadow: var(--glow-cyan); }

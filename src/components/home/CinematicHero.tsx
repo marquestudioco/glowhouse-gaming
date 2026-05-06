@@ -23,11 +23,6 @@ export function CinematicHero() {
   const [headlineActive, setHeadlineActive] = useState(false);
   const [ctaActive,      setCtaActive]      = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const reducedMotion = useRef(false);
-
-  useEffect(() => {
-    reducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }, []);
 
   const onWordmarkComplete = useCallback(() => {
     setWordmarkDone(true);
@@ -38,7 +33,6 @@ export function CinematicHero() {
 
   useEffect(() => {
     if (!wordmarkDone) return;
-    if (reducedMotion.current) return;
     intervalRef.current = setInterval(() => {
       setActiveScene(s => (s + 1) % SCENES.length);
     }, 4500);
@@ -166,6 +160,19 @@ export function CinematicHero() {
             aria-label={`View scene ${i + 1}: ${SCENES[i].label}`}
           />
         ))}
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        aria-hidden
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-[2] flex flex-col items-center gap-1 opacity-60"
+        style={{ animation: 'scrollBounce 2s ease-in-out infinite' }}
+      >
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--neon-cyan)]">Scroll</span>
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+          <rect x="1" y="1" width="14" height="22" rx="7" stroke="var(--neon-cyan)" strokeWidth="1.5"/>
+          <rect x="7" y="5" width="2" height="6" rx="1" fill="var(--neon-cyan)" style={{ animation: 'scrollDot 2s ease-in-out infinite' }}/>
+        </svg>
       </div>
     </section>
   );

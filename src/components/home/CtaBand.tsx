@@ -5,14 +5,50 @@ import { Container } from '@/components/ui/Container';
 export function CtaBand() {
   return (
     <section
-      className="py-24 relative overflow-clip"
+      className="py-28 relative overflow-clip"
       style={{ background: 'var(--bg-deep)' }}
     >
+      {/* Deep radial glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,229,255,0.07) 0%, transparent 65%)' }} />
+        style={{ background: 'radial-gradient(ellipse 90% 80% at 50% 50%, rgba(0,229,255,0.1) 0%, rgba(123,44,191,0.06) 40%, transparent 70%)' }} />
 
-      <div aria-hidden className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(to right, transparent, var(--neon-cyan), var(--neon-magenta), transparent)' }} />
+      {/* Animated top shimmer border */}
+      <div aria-hidden className="absolute top-0 left-0 right-0 h-px overflow-hidden">
+        <div style={{
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-magenta), var(--neon-violet), var(--neon-cyan), transparent)',
+          backgroundSize: '200% 100%',
+          animation: 'neonShimmer 3s linear infinite',
+        }} />
+      </div>
+
+      {/* Bottom shimmer border */}
+      <div aria-hidden className="absolute bottom-0 left-0 right-0 h-px overflow-hidden">
+        <div style={{
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, var(--neon-violet), var(--neon-magenta), var(--neon-cyan), var(--neon-violet), transparent)',
+          backgroundSize: '200% 100%',
+          animation: 'neonShimmer 3s linear infinite reverse',
+        }} />
+      </div>
+
+      {/* Floating particles */}
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          aria-hidden
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: [4, 6, 3, 5, 4, 6][i],
+            height: [4, 6, 3, 5, 4, 6][i],
+            left: `${[15, 30, 50, 65, 78, 88][i]}%`,
+            bottom: `${[10, 20, 5, 15, 8, 25][i]}%`,
+            background: ['var(--neon-cyan)', 'var(--neon-magenta)', 'var(--neon-violet)', 'var(--neon-cyan)', 'var(--neon-magenta)', 'var(--neon-violet)'][i],
+            boxShadow: `0 0 8px currentColor`,
+            animation: `floatUp ${[3.5, 4.2, 5, 3.8, 4.5, 3.2][i]}s ease-in-out ${[0, 0.8, 1.5, 0.4, 1.2, 2][i]}s infinite`,
+          }}
+        />
+      ))}
 
       <Container size="narrow">
         <div className="text-center">
@@ -29,7 +65,10 @@ export function CtaBand() {
             <Link
               href="/book"
               className="px-10 py-4 rounded-full font-bold text-white text-base transition-all hover:scale-105"
-              style={{ background: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-violet))' }}
+              style={{
+                background: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-violet))',
+                boxShadow: '0 0 30px rgba(0,229,255,0.25), 0 0 60px rgba(123,44,191,0.15)',
+              }}
               data-magnetic
             >
               Book a Party Now

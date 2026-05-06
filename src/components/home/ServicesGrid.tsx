@@ -44,8 +44,23 @@ export function ServicesGrid() {
             >
               <Link
                 href={`/services#${service.id}`}
-                className="group block p-6 rounded-2xl border border-white/5 bg-[var(--bg-elevated)] transition-all duration-300 hover:border-current hover:shadow-[0_0_20px_rgba(0,0,0,0.3)]"
-                style={{ '--accent': service.accentColor } as React.CSSProperties}
+                className="group block p-6 rounded-2xl border border-white/5 bg-[var(--bg-elevated)] transition-all duration-300"
+                style={{
+                  '--accent': service.accentColor,
+                  transition: 'border-color 0.3s, box-shadow 0.3s, transform 0.2s',
+                } as React.CSSProperties}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = service.accentColor;
+                  el.style.boxShadow = `0 0 20px ${service.accentColor}30, 0 0 40px ${service.accentColor}10`;
+                  el.style.transform = 'translateY(-3px)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = '';
+                  el.style.boxShadow = '';
+                  el.style.transform = '';
+                }}
               >
                 <div className="flex items-start justify-between mb-4">
                   <span className="text-3xl" aria-hidden>{ICON_MAP[service.id]}</span>

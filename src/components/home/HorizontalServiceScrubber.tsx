@@ -1,16 +1,17 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { SERVICES, type Service } from '@/lib/data/services';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 
 const BG_COLORS: Record<string, string> = {
-  'gaming-lounge':  'radial-gradient(ellipse at 30% 50%, rgba(0,229,255,0.12) 0%, transparent 70%)',
-  'vr-rental':      'radial-gradient(ellipse at 70% 40%, rgba(0,229,255,0.1)  0%, transparent 70%)',
-  'outdoor-movies': 'radial-gradient(ellipse at 50% 60%, rgba(255,46,147,0.12) 0%, transparent 70%)',
-  'party-van':      'radial-gradient(ellipse at 20% 50%, rgba(123,44,191,0.12) 0%, transparent 70%)',
-  'silent-disco':   'radial-gradient(ellipse at 80% 30%, rgba(255,46,147,0.1)  0%, transparent 70%)',
-  'after-school':   'radial-gradient(ellipse at 40% 60%, rgba(123,44,191,0.1)  0%, transparent 70%)',
+  'gaming-lounge':  'radial-gradient(ellipse at 30% 50%, rgba(0,229,255,0.15) 0%, transparent 70%)',
+  'vr-rental':      'radial-gradient(ellipse at 70% 40%, rgba(0,229,255,0.12) 0%, transparent 70%)',
+  'outdoor-movies': 'radial-gradient(ellipse at 50% 60%, rgba(255,46,147,0.15) 0%, transparent 70%)',
+  'party-van':      'radial-gradient(ellipse at 20% 50%, rgba(123,44,191,0.15) 0%, transparent 70%)',
+  'silent-disco':   'radial-gradient(ellipse at 80% 30%, rgba(255,46,147,0.12) 0%, transparent 70%)',
+  'after-school':   'radial-gradient(ellipse at 40% 60%, rgba(123,44,191,0.12) 0%, transparent 70%)',
 };
 
 const ICON_MAP: Record<string, string> = {
@@ -25,8 +26,8 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
 
   return (
     <div
-      className="relative flex-shrink-0 flex flex-col justify-end"
-      style={{ width: '100vw', height: '100vh', background: 'var(--bg-deep)' }}
+      className="relative flex-shrink-0 flex flex-col justify-center"
+      style={{ width: '100vw', height: '100vh', background: 'var(--bg-deep)', overflow: 'clip' }}
     >
       <div
         aria-hidden
@@ -34,70 +35,119 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
         style={{ background: BG_COLORS[service.id] }}
       />
 
+      {/* Panel number */}
       <div
-        className="absolute top-10 right-10 font-mono text-xs tracking-widest"
-        style={{ color: service.accentColor }}
+        className="absolute top-8 right-10 font-mono text-xs tracking-widest"
+        style={{ color: service.accentColor, opacity: 0.7 }}
         aria-hidden
       >
         {num} / {String(SERVICES.length).padStart(2, '0')}
       </div>
 
-      <div className="relative z-10 px-8 sm:px-16 lg:px-24 pb-20 max-w-2xl">
-        <Eyebrow color={color} className="mb-4">{num}</Eyebrow>
-        <div className="text-6xl mb-6" aria-hidden>{ICON_MAP[service.id]}</div>
+      {/* Massive background number */}
+      <div
+        aria-hidden
+        className="absolute right-0 top-1/2 -translate-y-1/2 font-display font-bold leading-none pointer-events-none select-none"
+        style={{
+          fontSize: 'clamp(12rem, 25vw, 22rem)',
+          fontFamily: "'Clash Display', Georgia, serif",
+          color: service.accentColor,
+          opacity: 0.03,
+          right: 0,
+        }}
+      >
+        {num}
+      </div>
+
+      <div className="relative z-10 px-8 sm:px-16 lg:px-24 max-w-3xl">
+        <Eyebrow color={color} className="mb-5">{service.tagline}</Eyebrow>
+
+        <div className="text-7xl mb-6" aria-hidden>{ICON_MAP[service.id]}</div>
+
         <h2
-          className="font-display font-bold mb-4"
+          className="font-display font-bold mb-5"
           style={{
-            fontSize: 'clamp(2rem, 5vw, 4rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
             fontFamily: "'Clash Display', Georgia, serif",
             color: service.accentColor,
+            textShadow: `0 0 40px ${service.accentColor}60`,
+            lineHeight: 1.05,
           }}
         >
           {service.name}
         </h2>
-        <p className="text-lg text-[var(--text-dim)] leading-relaxed mb-6 max-w-md">
+
+        <p className="text-xl text-[var(--text-dim)] leading-relaxed mb-8 max-w-lg">
           {service.description}
         </p>
-        <ul className="flex flex-wrap gap-3">
+
+        <div className="flex flex-wrap gap-3 mb-10">
           {service.highlights.slice(0, 4).map(h => (
-            <li
+            <span
               key={h}
-              className="text-sm px-3 py-1.5 rounded-full border"
-              style={{ borderColor: service.accentColor + '50', color: service.accentColor }}
+              className="text-sm px-4 py-2 rounded-full border font-medium"
+              style={{ borderColor: service.accentColor + '50', color: service.accentColor, background: service.accentColor + '08' }}
             >
               {h}
-            </li>
+            </span>
           ))}
-        </ul>
+        </div>
+
+        <Link
+          href={`/book?service=${service.id}`}
+          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-white text-sm transition-all hover:scale-105"
+          style={{
+            background: service.accentColor,
+            boxShadow: `0 0 20px ${service.accentColor}40`,
+          }}
+          data-magnetic
+        >
+          Book this service →
+        </Link>
       </div>
 
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: `linear-gradient(to right, transparent, ${service.accentColor}, transparent)` }}
+        style={{ background: `linear-gradient(to right, transparent, ${service.accentColor}80, transparent)` }}
       />
     </div>
   );
 }
 
 export function HorizontalServiceScrubber() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackRef   = useRef<HTMLDivElement>(null);
+  const sectionRef  = useRef<HTMLElement>(null);
+  const trackRef    = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const dotsRef     = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const track   = trackRef.current;
+    const section  = sectionRef.current;
+    const track    = trackRef.current;
+    const progress = progressRef.current;
+    const dots     = dotsRef.current;
     if (!section || !track) return;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (window.matchMedia('(max-width: 767px)').matches) return;
 
     const onScroll = () => {
-      const rect             = section.getBoundingClientRect();
+      const rect              = section.getBoundingClientRect();
       const sectionScrollDist = rect.height - window.innerHeight;
       const scrolled          = -rect.top;
-      const progress          = Math.max(0, Math.min(1, scrolled / sectionScrollDist));
-      const translateX        = progress * (SERVICES.length - 1) * 100;
+      const p                 = Math.max(0, Math.min(1, scrolled / sectionScrollDist));
+      const translateX        = p * (SERVICES.length - 1) * 100;
       track.style.transform   = `translateX(-${translateX}vw)`;
+
+      if (progress) progress.style.width = `${p * 100}%`;
+
+      if (dots) {
+        const activeIndex = Math.round(p * (SERVICES.length - 1));
+        dots.querySelectorAll<HTMLElement>('[data-dot]').forEach((dot, i) => {
+          dot.style.background = i === activeIndex
+            ? SERVICES[activeIndex].accentColor
+            : 'rgba(255,255,255,0.2)';
+          dot.style.width = i === activeIndex ? '24px' : '8px';
+        });
+      }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -122,6 +172,38 @@ export function HorizontalServiceScrubber() {
             {SERVICES.map((service, i) => (
               <ServicePanel key={service.id} service={service} index={i} />
             ))}
+          </div>
+
+          {/* Progress bar */}
+          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/5">
+            <div
+              ref={progressRef}
+              className="h-full transition-none"
+              style={{ background: 'linear-gradient(to right, var(--neon-cyan), var(--neon-magenta))', width: '0%' }}
+            />
+          </div>
+
+          {/* Service dots */}
+          <div
+            ref={dotsRef}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2"
+          >
+            {SERVICES.map((_, i) => (
+              <div
+                key={i}
+                data-dot
+                className="rounded-full transition-all duration-300"
+                style={{ width: i === 0 ? 24 : 8, height: 8, background: i === 0 ? SERVICES[0].accentColor : 'rgba(255,255,255,0.2)' }}
+              />
+            ))}
+          </div>
+
+          {/* Scroll hint on first view */}
+          <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 opacity-40">
+            <span className="text-[10px] uppercase tracking-widest text-[var(--text-dim)] [writing-mode:vertical-lr]">Scroll to explore</span>
+            <svg width="16" height="32" viewBox="0 0 16 32" fill="none">
+              <path d="M8 4v24M8 28l-4-4M8 28l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
           </div>
         </div>
       </section>

@@ -41,6 +41,7 @@ export function TestimonialMarquee() {
           style={{ background: 'linear-gradient(to left, var(--bg-deep), transparent)' }} />
 
         <div
+          className="marquee-track"
           style={{
             display: 'flex',
             width: 'max-content',

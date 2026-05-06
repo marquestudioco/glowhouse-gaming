@@ -9,7 +9,6 @@ export function GlowTrailCursor() {
 
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const dot   = dotRef.current;
     const trail = trailRef.current;
