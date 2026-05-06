@@ -36,7 +36,7 @@ export default function GalleryPage() {
         </Container>
       </section>
 
-      <PhotoMosaic />
+      <PhotoMosaic showHeader={false} />
       <CtaBand />
     </>
   );

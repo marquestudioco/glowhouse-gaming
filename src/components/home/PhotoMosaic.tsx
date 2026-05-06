@@ -19,18 +19,20 @@ const GALLERY_IMAGES = [
   { src: '/gallery/photo-09.webp', alt: 'Kid playing games at Glowhouse Gaming lounge',  aspect: 'portrait'  },
 ];
 
-export function PhotoMosaic() {
+export function PhotoMosaic({ showHeader = true }: { showHeader?: boolean }) {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   return (
     <section className="py-[var(--section-gap)]" style={{ background: 'var(--bg-deep)' }}>
       <Container>
-        <div className="text-center mb-12">
-          <Eyebrow color="magenta" className="mb-3">Gallery</Eyebrow>
-          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}>
-            The best parties glow
-          </h2>
-        </div>
+        {showHeader && (
+          <div className="text-center mb-12">
+            <Eyebrow color="magenta" className="mb-3">Gallery</Eyebrow>
+            <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}>
+              The best parties glow
+            </h2>
+          </div>
+        )}
 
         <div className="columns-1 sm:columns-2 lg:columns-3" style={{ columnGap: '1rem' }}>
           {GALLERY_IMAGES.map((img, i) => (
