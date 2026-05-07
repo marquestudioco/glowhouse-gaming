@@ -64,7 +64,7 @@ export function AiReceptionistDemo() {
           <p className="mt-4 text-sm text-[var(--neon-cyan)]">✓ Call initiated — pick up in a moment!</p>
         )}
         {status === 'error' && (
-          <p className="mt-4 text-sm text-red-400">Something went wrong. Make sure the API endpoint is wired up.</p>
+          <p className="mt-4 text-sm text-red-400">Call failed — check that ElevenLabs env vars are set in Cloudflare Workers (ELEVENLABS_API_KEY, GLOWHOUSE_AGENT_ID, GLOWHOUSE_PHONE_NUMBER_ID).</p>
         )}
 
         <p className="text-[10px] text-[var(--text-dim)]/50 mt-6">

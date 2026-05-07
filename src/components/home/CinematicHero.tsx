@@ -95,7 +95,7 @@ export function CinematicHero() {
       {/* Base dark layer */}
       <div aria-hidden className="absolute inset-0" style={{ background: '#0A0612' }} />
 
-      {/* Scene layers: real photo darkened + neon gradient overlay */}
+      {/* Scene layers: neon gradient overlays only */}
       {SCENES.map((scene, i) => (
         <div
           key={scene.label}
@@ -103,17 +103,6 @@ export function CinematicHero() {
           className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === activeScene ? 1 : 0 }}
         >
-          {/* Photo background */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${scene.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: 0.55,
-            }}
-          />
-          {/* Neon color overlay */}
           <div
             className="absolute inset-0"
             style={{ background: scene.overlay }}

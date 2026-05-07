@@ -44,12 +44,12 @@ export default function ServicesPage() {
           </div>
 
           {/* Quick-jump nav */}
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3">
             {SERVICES.map(service => (
               <a
                 key={service.id}
                 href={`#${service.id}`}
-                className="flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-all hover:scale-105"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-all hover:scale-105"
                 style={{
                   borderColor: service.accentColor + '40',
                   color: service.accentColor,

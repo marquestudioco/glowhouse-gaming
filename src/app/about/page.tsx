@@ -61,7 +61,7 @@ export default function AboutPage() {
                 className="font-display font-bold mb-6"
                 style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}
               >
-                Born in Santa Clarita. Powered by passion.
+                Born in Santa Clarita.<br />Powered by passion.
               </h1>
               <p className="text-[var(--text-dim)] leading-relaxed mb-4 text-lg">
                 Glowhouse Gaming opened in 2017 with one mission: make group entertainment unforgettable. We started with a single lounge and a belief that the right atmosphere changes everything.

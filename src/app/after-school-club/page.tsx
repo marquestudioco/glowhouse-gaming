@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Clock, Shield, Users, Trophy, BookOpen, Star } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Eyebrow }   from '@/components/ui/Eyebrow';
@@ -69,15 +68,6 @@ export default function AfterSchoolClubPage() {
 
         <Container size="narrow">
           <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <Image
-                src="/after-school/club-logo-transparent.png"
-                alt="After School Club — Glowhouse Gaming"
-                width={160}
-                height={160}
-                className="drop-shadow-[0_0_24px_rgba(123,44,191,0.5)]"
-              />
-            </div>
             <Eyebrow color="violet" className="mb-4">After School Club</Eyebrow>
             <h1
               className="font-display font-bold italic mb-6"

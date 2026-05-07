@@ -27,7 +27,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 text-center sm:text-left">
             <Link href="/" className="inline-block mb-4">
               <Image
                 src="/logo-color.png"

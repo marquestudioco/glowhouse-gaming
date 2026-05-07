@@ -14,7 +14,7 @@ export function BirthdayHostCard() {
         </div>
         <div className="flex flex-col sm:flex-row gap-8 items-center bg-[var(--bg-deep)] rounded-2xl border border-white/5 p-8">
           <div className="relative w-32 h-32 rounded-full overflow-hidden shrink-0 border-2" style={{ borderColor: 'var(--neon-magenta)' }}>
-            <Image src="/about/birthday-host.webp" alt="Birthday party host" fill className="object-cover" />
+            <Image src="/about/owner-team.webp" alt="Glowhouse Gaming team" fill className="object-cover object-top" />
           </div>
           <div>
             <h3 className="font-bold text-xl text-[var(--text-light)] mb-1">Your Party Host</h3>

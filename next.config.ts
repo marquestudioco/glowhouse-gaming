@@ -20,7 +20,7 @@ const securityHeaders = [
       "img-src 'self' data: blob: https:",
       "media-src 'self' https:",
       "connect-src 'self' https://api.anthropic.com https://api.elevenlabs.io https://api.resend.com",
-      "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
+      "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
