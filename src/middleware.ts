@@ -16,7 +16,7 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith('/_next/') ||
     pathname === '/favicon.ico' ||
-    pathname === '/__auth'
+    pathname === '/api/staging-auth'
   ) {
     return NextResponse.next();
   }
@@ -98,7 +98,7 @@ export function middleware(request: NextRequest) {
   <div class="card">
     <div class="logo">GLOWHOUSE GAMING</div>
     <div class="sub">Private Preview</div>
-    <form id="f" method="POST" action="/__auth">
+    <form id="f" method="POST" action="/api/staging-auth">
       <label for="pw">Access Password</label>
       <input id="pw" name="password" type="password" autofocus autocomplete="current-password" placeholder="Enter password" />
       <button type="submit">Enter Preview</button>
@@ -111,7 +111,7 @@ export function middleware(request: NextRequest) {
     document.getElementById('f').addEventListener('submit', async (ev) => {
       ev.preventDefault();
       const pw = document.getElementById('pw').value;
-      const r = await fetch('/__auth', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: pw }) });
+      const r = await fetch('/api/staging-auth', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: pw }) });
       if (r.ok) { location.reload(); } else { document.getElementById('err').classList.add('show'); }
     });
   </script>
