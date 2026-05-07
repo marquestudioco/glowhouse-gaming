@@ -13,9 +13,10 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: "Hey! I'm Sparks ⚡ — Glowhouse Gaming's party concierge. What kind of party are you planning?" }
   ]);
-  const [input,   setInput]   = useState('');
-  const [loading, setLoading] = useState(false);
-  const bottomRef             = useRef<HTMLDivElement>(null);
+  const [input,     setInput]     = useState('');
+  const [loading,   setLoading]   = useState(false);
+  const [chatError, setChatError] = useState('');
+  const bottomRef                 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -24,20 +25,32 @@ export function ChatWidget() {
   const send = async () => {
     if (!input.trim() || loading) return;
     const userMsg: Message = { role: 'user', content: input.trim() };
-    setMessages(m => [...m, userMsg]);
+    const prevMessages = messages;
+    const newMessages  = [...messages, userMsg];
+    setMessages(newMessages);
     setInput('');
     setLoading(true);
+    setChatError('');
 
     try {
       const res  = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: [...messages, userMsg].map(m => ({ role: m.role, content: m.content })) }),
+        body: JSON.stringify({ messages: newMessages.map(m => ({ role: m.role, content: m.content })) }),
       });
       const data = await res.json();
-      setMessages(m => [...m, { role: 'assistant', content: data.reply || 'Sorry, I had trouble responding. Call us at (855) 348-4569!' }]);
+      if (data.reply) {
+        setMessages(m => [...m, { role: 'assistant', content: data.reply }]);
+      } else {
+        // Roll back — keep conversation clean, restore input for retry
+        setMessages(prevMessages);
+        setInput(userMsg.content);
+        setChatError("Sparks hit a snag — try again!");
+      }
     } catch {
-      setMessages(m => [...m, { role: 'assistant', content: 'Something went wrong. Call us at (855) 348-4569!' }]);
+      setMessages(prevMessages);
+      setInput(userMsg.content);
+      setChatError("Connection error — try again or call (855) 348-4569!");
     } finally {
       setLoading(false);
     }
@@ -97,6 +110,10 @@ export function ChatWidget() {
             )}
             <div ref={bottomRef} />
           </div>
+
+          {chatError && (
+            <p className="px-3 pb-1 text-xs text-red-400 text-center">{chatError}</p>
+          )}
 
           <div className="p-3 border-t border-white/5">
             <div className="flex gap-2">

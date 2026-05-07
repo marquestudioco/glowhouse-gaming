@@ -9,6 +9,9 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
+// Required for Cloudflare Workers — edge runtime silently ignores wrangler secrets via process.env
+export const runtime = 'nodejs';
+
 const AGENT_ID        = process.env.GLOWHOUSE_AGENT_ID ?? '';
 const PHONE_NUMBER_ID = process.env.GLOWHOUSE_PHONE_NUMBER_ID ?? '';
 const API_KEY         = process.env.ELEVENLABS_API_KEY ?? '';
