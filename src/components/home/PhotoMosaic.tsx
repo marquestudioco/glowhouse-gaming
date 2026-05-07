@@ -27,8 +27,6 @@ const GALLERY_IMAGES = [
   { src: '/silent-disco/photo-3.jpg', alt: 'Girl wearing Glow Squad silent disco headphones outdoors',  aspect: 'portrait'  },
   { src: '/silent-disco/photo-4.jpg', alt: 'Everyone dancing at a Glowhouse silent disco',              aspect: 'square'    },
   { src: '/silent-disco/photo-1.jpg', alt: 'Silent disco guests at the DJ setup',                       aspect: 'square'    },
-  // Van & outdoor
-  { src: '/gallery/photo-05.webp', alt: 'Glowhouse Gaming party van with outdoor screen',               aspect: 'landscape' },
   // VR
   { src: '/gallery/photo-20.jpg',  alt: 'Multiple guests experiencing VR headsets at a Glowhouse event', aspect: 'landscape' },
   { src: '/gallery/photo-16.jpg',  alt: 'Glowhouse Gaming host on mic with LED headphones at an event',  aspect: 'landscape' },
