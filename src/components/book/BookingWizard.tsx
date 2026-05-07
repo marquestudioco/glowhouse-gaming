@@ -94,7 +94,7 @@ export function BookingWizard({ initialDate = '', initialService = '', initialPa
           </div>
           <div>
             <label className="block text-sm text-[var(--text-dim)] mb-2">Service *</label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {SERVICES.map(s => (
                 <button
                   key={s.id}

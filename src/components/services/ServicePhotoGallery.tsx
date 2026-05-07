@@ -92,7 +92,7 @@ export function ServicePhotoGallery({ photos, accentColor, label = 'Event Photos
           </button>
 
           <div
-            className="relative max-w-4xl max-h-[85vh] mx-16"
+            className="relative max-w-4xl max-h-[85vh] mx-2 sm:mx-16"
             onClick={e => e.stopPropagation()}
           >
             <Image

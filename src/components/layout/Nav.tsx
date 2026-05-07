@@ -104,7 +104,7 @@ export function Nav() {
                   href={href}
                   onClick={() => setMenuOpen(false)}
                   className={[
-                    'block text-base font-medium py-2',
+                    'block text-base font-medium py-3',
                     highlight ? 'text-[var(--neon-magenta)]' : 'text-[var(--text-light)]',
                   ].join(' ')}
                 >
@@ -113,7 +113,7 @@ export function Nav() {
               </li>
             ))}
             <li>
-              <a href="tel:+18553484569" className="flex items-center gap-2 text-[var(--neon-cyan)] text-base font-medium py-2">
+              <a href="tel:+18553484569" className="flex items-center gap-2 text-[var(--neon-cyan)] text-base font-medium py-3">
                 <Phone size={16} />
                 (855) 348-4569
               </a>

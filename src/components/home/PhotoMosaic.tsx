@@ -38,7 +38,8 @@ const GALLERY_IMAGES = [
   // More events
   { src: '/gallery/photo-30.jpg',  alt: 'Owner dancing with guests at a Glowhouse holiday party',        aspect: 'landscape' },
   { src: '/gallery/photo-22.jpg',  alt: 'Glowhouse Gaming host on mic — Glowhouse logo sign behind',    aspect: 'landscape' },
-  { src: '/gallery/photo-28.jpg',  alt: 'Outdoor Lakers-themed gaming party with inflatable seating',    aspect: 'landscape' },
+  { src: '/outdoor/superbowl-setup.jpg', alt: 'Glowhouse outdoor Super Bowl event setup with big screen',        aspect: 'portrait'  },
+  { src: '/gallery/photo-28.jpg',        alt: 'Outdoor Lakers-themed gaming party with inflatable seating',    aspect: 'landscape' },
   { src: '/gallery/photo-23.jpg',  alt: 'The Glowhouse Gaming team at a branded event',                  aspect: 'landscape' },
 ];
 
@@ -120,7 +121,7 @@ export function PhotoMosaic({ showHeader = true }: { showHeader?: boolean }) {
           </button>
 
           <div
-            className="relative max-w-4xl max-h-[85vh] mx-16"
+            className="relative max-w-4xl max-h-[85vh] mx-2 sm:mx-16"
             onClick={e => e.stopPropagation()}
           >
             <Image

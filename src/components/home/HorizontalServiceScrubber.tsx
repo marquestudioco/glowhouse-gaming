@@ -7,7 +7,7 @@ import { SERVICES, type Service } from '@/lib/data/services';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 
 const PANEL_PHOTOS: Record<string, string> = {
-  'gaming-lounge':  '/lounge/kids-neon.jpg',
+  'gaming-lounge':  '/gallery/gaming-kids-neon.png',
   'vr-rental':      '/vr/kid-vr-neon.jpg',
   'outdoor-movies': '/gallery/photo-24.jpg',
   'party-van':      '/gallery/photo-25.jpg',
@@ -37,7 +37,7 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
   return (
     <div
       className="relative flex-shrink-0 flex flex-col justify-center"
-      style={{ width: '100vw', height: '100vh', background: 'var(--bg-deep)', overflow: 'clip' }}
+      style={{ width: '100vw', height: '100svh', background: 'var(--bg-deep)', overflow: 'clip' }}
     >
       {/* Real photo — right half, faded into bg */}
       <div aria-hidden className="absolute right-0 top-0 w-1/2 h-full pointer-events-none" style={{ opacity: 0.18 }}>
@@ -82,15 +82,15 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
         {num}
       </div>
 
-      <div className="relative z-10 px-8 sm:px-16 lg:px-24 max-w-3xl">
-        <Eyebrow color={color} className="mb-5">{service.tagline}</Eyebrow>
+      <div className="relative z-10 px-6 sm:px-16 lg:px-24 max-w-3xl">
+        <Eyebrow color={color} className="mb-4 sm:mb-5">{service.tagline}</Eyebrow>
 
-        <div className="text-7xl mb-6" aria-hidden>{ICON_MAP[service.id]}</div>
+        <div className="text-5xl sm:text-7xl mb-4 sm:mb-6" aria-hidden>{ICON_MAP[service.id]}</div>
 
         <h2
-          className="font-display font-bold mb-5"
+          className="font-display font-bold mb-4 sm:mb-5"
           style={{
-            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+            fontSize: 'clamp(2rem, 6vw, 5rem)',
             fontFamily: "'Clash Display', Georgia, serif",
             color: service.accentColor,
             textShadow: `0 0 40px ${service.accentColor}60`,
@@ -100,11 +100,11 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
           {service.name}
         </h2>
 
-        <p className="text-xl text-[var(--text-dim)] leading-relaxed mb-8 max-w-lg">
+        <p className="text-base sm:text-xl text-[var(--text-dim)] leading-relaxed mb-6 sm:mb-8 max-w-lg">
           {service.description}
         </p>
 
-        <div className="flex flex-wrap gap-3 mb-10">
+        <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
           {service.highlights.slice(0, 4).map(h => (
             <span
               key={h}
@@ -183,10 +183,10 @@ export function HorizontalServiceScrubber() {
       <section
         ref={sectionRef}
         className="relative hidden md:block"
-        style={{ height: `${SERVICES.length * 100}vh` }}
+        style={{ height: `${SERVICES.length * 100}svh` }}
         aria-label="Explore our 6 services"
       >
-        <div className="sticky top-0 h-screen" style={{ overflow: 'clip' }}>
+        <div className="sticky top-0 h-[100svh]" style={{ overflow: 'clip' }}>
           <div
             ref={trackRef}
             className="flex will-change-transform"

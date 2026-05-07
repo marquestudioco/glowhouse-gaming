@@ -54,7 +54,7 @@ export default function AboutPage() {
         <div aria-hidden className="pointer-events-none absolute inset-0"
           style={{ background: 'radial-gradient(ellipse 70% 60% at 70% 50%, rgba(123,44,191,0.12) 0%, transparent 65%)' }} />
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="relative z-10">
               <Eyebrow color="violet" className="mb-4">Our Story</Eyebrow>
               <h1
