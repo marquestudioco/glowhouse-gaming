@@ -10,7 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "cf:build": "next build --webpack && opennextjs-cloudflare build --skipNextBuild && node scripts/patch-handler.mjs",
+    "cf:build": "node scripts/kill-workerd.mjs && next build --webpack && opennextjs-cloudflare build --skipNextBuild && node scripts/patch-handler.mjs",
     "cf:preview": "opennextjs-cloudflare preview",
     "cf:deploy": "opennextjs-cloudflare deploy"
   },
