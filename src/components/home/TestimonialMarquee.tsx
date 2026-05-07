@@ -46,7 +46,7 @@ export function TestimonialMarquee() {
       <Container>
         <div className="text-center mb-12">
           <Eyebrow color="cyan" className="mb-3">Reviews</Eyebrow>
-          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}>
+          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
             5.0 stars, every time
           </h2>
         </div>

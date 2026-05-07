@@ -33,7 +33,7 @@ export function NeonLineDrawWordmark({ onComplete }: Props) {
             color: 'transparent',
             WebkitTextStroke: '1.5px var(--neon-cyan)',
             textShadow: 'var(--glow-cyan)',
-            fontFamily: "'Clash Display', Georgia, serif",
+            fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
           }}
         >
           Glowhouse
@@ -45,7 +45,7 @@ export function NeonLineDrawWordmark({ onComplete }: Props) {
             color: 'transparent',
             WebkitTextStroke: '1px var(--neon-magenta)',
             textShadow: 'var(--glow-magenta)',
-            fontFamily: "'Clash Display', Georgia, serif",
+            fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
             animationDelay: '0.3s',
           }}
         >

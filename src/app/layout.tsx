@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
 import { SmoothScroll }           from '@/components/layout/SmoothScroll';
@@ -19,6 +19,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
+});
+// Fallback display font while Clash Display woff2 files are self-hosted
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-clash',
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
   display: 'swap',
 });
 
@@ -90,7 +97,7 @@ const localBusinessSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
     >
       <head>
         <link rel="preload" as="image" href="/hero/scene-1.webp" fetchPriority="high" />

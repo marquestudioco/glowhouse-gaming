@@ -26,7 +26,7 @@ export function ServicesGrid() {
             className="font-display font-bold"
             style={{
               fontSize: 'var(--text-display)',
-              fontFamily: "'Clash Display', Georgia, serif",
+              fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
             }}
           >
             Pick your party

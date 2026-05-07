@@ -13,7 +13,7 @@ export function PackagesTeaser() {
       <Container>
         <div className="text-center mb-14">
           <Eyebrow color="magenta" className="mb-3">Packages</Eyebrow>
-          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}>
+          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
             Choose your glow level
           </h2>
           <p className="text-[var(--text-dim)] mt-3">All packages include setup, custom playlist, and LED lighting.</p>

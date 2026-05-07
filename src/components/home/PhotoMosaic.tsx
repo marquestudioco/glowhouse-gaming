@@ -55,7 +55,7 @@ export function PhotoMosaic({ showHeader = true }: { showHeader?: boolean }) {
         {showHeader && (
           <div className="text-center mb-12">
             <Eyebrow color="magenta" className="mb-3">Gallery</Eyebrow>
-            <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}>
+            <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
               The best parties glow
             </h2>
           </div>

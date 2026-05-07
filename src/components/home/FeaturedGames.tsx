@@ -28,7 +28,7 @@ export function FeaturedGames() {
       <Container>
         <div className="text-center mb-12">
           <Eyebrow color="cyan" className="mb-3">Game Library</Eyebrow>
-          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}>
+          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
             Featured games
           </h2>
           <p className="text-[var(--text-dim)] mt-3">
@@ -68,7 +68,7 @@ export function FeaturedGames() {
           {/* +100 more card */}
           <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-white/10 flex flex-col items-center justify-center"
             style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(0,229,255,0.08) 0%, transparent 70%)' }}>
-            <p className="font-display font-bold text-2xl" style={{ color: 'var(--neon-cyan)', fontFamily: "'Clash Display', Georgia, serif" }}>+100</p>
+            <p className="font-display font-bold text-2xl" style={{ color: 'var(--neon-cyan)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>+100</p>
             <p className="text-[10px] text-[var(--text-dim)] text-center mt-1 px-2">more titles available</p>
           </div>
         </div>

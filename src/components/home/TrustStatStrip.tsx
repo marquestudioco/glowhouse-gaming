@@ -28,7 +28,7 @@ export function TrustStatStrip() {
                 style={{
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
                   color: 'var(--neon-cyan)',
-                  fontFamily: "'Clash Display', Georgia, serif",
+                  fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
                   textShadow: '0 0 20px rgba(0,229,255,0.3)',
                 }}
               >

@@ -20,7 +20,7 @@ export default function ContactPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <Eyebrow color="cyan" className="mb-4">Get in Touch</Eyebrow>
-            <h1 className="font-display font-bold italic" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}>
+            <h1 className="font-display font-bold italic" style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
               Let's talk parties
             </h1>
             <p className="text-[var(--text-dim)] mt-4 text-lg max-w-md mx-auto">
@@ -78,7 +78,7 @@ export default function ContactPage() {
               {/* Map */}
               <div className="relative rounded-2xl overflow-hidden border border-white/5" style={{ height: 260 }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300!2d-118.555!3d34.414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDI0JzUwLjQiTiAxMTjCsDMzJzE4LjAiVw!5e0!3m2!1sen!2sus!4v1"
+                  src="https://maps.google.com/maps?q=25061+Avenue+Stanford+Suite+40,+Santa+Clarita,+CA+91355&output=embed"
                   width="100%" height="100%"
                   style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) saturate(0.7)' }}
                   allowFullScreen loading="lazy"

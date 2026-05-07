@@ -34,7 +34,7 @@ export default function ServicesPage() {
             <Eyebrow color="cyan" className="mb-4">Services</Eyebrow>
             <h1
               className="font-display font-bold italic mb-4"
-              style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}
+              style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}
             >
               6 Ways to Glow
             </h1>

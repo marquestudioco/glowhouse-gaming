@@ -73,7 +73,7 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
         className="absolute right-0 top-1/2 -translate-y-1/2 font-display font-bold leading-none pointer-events-none select-none"
         style={{
           fontSize: 'clamp(12rem, 25vw, 22rem)',
-          fontFamily: "'Clash Display', Georgia, serif",
+          fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
           color: service.accentColor,
           opacity: 0.03,
           right: 0,
@@ -91,7 +91,7 @@ function ServicePanel({ service, index }: { service: Service; index: number }) {
           className="font-display font-bold mb-4 sm:mb-5"
           style={{
             fontSize: 'clamp(2rem, 6vw, 5rem)',
-            fontFamily: "'Clash Display', Georgia, serif",
+            fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
             color: service.accentColor,
             textShadow: `0 0 40px ${service.accentColor}60`,
             lineHeight: 1.05,

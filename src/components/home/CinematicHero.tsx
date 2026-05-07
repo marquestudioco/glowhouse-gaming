@@ -5,60 +5,60 @@ import Link from 'next/link';
 import { NeonLineDrawWordmark } from './NeonLineDrawWordmark';
 import { DatePickerHero }      from './DatePickerHero';
 
-// Abstract gradient scenes — all use the logo's magenta → violet → cyan palette
+// Each scene composites a real photo with neon gradient overlays
 const SCENES = [
   {
     label: 'Gaming Lounge',
-    bg: `
-      radial-gradient(ellipse 90% 80% at 10% 55%, rgba(255,46,147,0.50) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 70% at 80% 40%, rgba(0,229,255,0.28) 0%, transparent 55%),
-      radial-gradient(ellipse 55% 65% at 50% 75%, rgba(123,44,191,0.32) 0%, transparent 60%),
-      #0A0612
+    image: '/hero/scene-1.webp',
+    overlay: `
+      radial-gradient(ellipse 90% 80% at 10% 55%, rgba(255,46,147,0.38) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 80% 40%, rgba(0,229,255,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 65% at 50% 75%, rgba(123,44,191,0.25) 0%, transparent 60%)
     `,
   },
   {
     label: 'VR Experience',
-    bg: `
-      radial-gradient(ellipse 80% 80% at 88% 50%, rgba(0,229,255,0.50) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 70% at 12% 45%, rgba(255,46,147,0.28) 0%, transparent 55%),
-      radial-gradient(ellipse 55% 65% at 50% 30%, rgba(123,44,191,0.32) 0%, transparent 60%),
-      #0A0612
+    image: '/hero/scene-2.webp',
+    overlay: `
+      radial-gradient(ellipse 80% 80% at 88% 50%, rgba(0,229,255,0.38) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 12% 45%, rgba(255,46,147,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 65% at 50% 30%, rgba(123,44,191,0.25) 0%, transparent 60%)
     `,
   },
   {
     label: 'Outdoor Movies',
-    bg: `
-      radial-gradient(ellipse 70% 80% at 20% 50%, rgba(255,46,147,0.42) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,229,255,0.38) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 60% at 50% 55%, rgba(123,44,191,0.38) 0%, transparent 60%),
-      #0A0612
+    image: '/hero/scene-3.webp',
+    overlay: `
+      radial-gradient(ellipse 70% 80% at 20% 50%, rgba(255,46,147,0.32) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,229,255,0.30) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 60% at 50% 55%, rgba(123,44,191,0.30) 0%, transparent 60%)
     `,
   },
   {
     label: 'Party Van',
-    bg: `
-      radial-gradient(ellipse 100% 60% at 50% 100%, rgba(123,44,191,0.45) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 70% at 15% 40%, rgba(255,46,147,0.35) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 60% at 85% 35%, rgba(0,229,255,0.30) 0%, transparent 55%),
-      #0A0612
+    image: '/hero/scene-4.webp',
+    overlay: `
+      radial-gradient(ellipse 100% 60% at 50% 100%, rgba(123,44,191,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 70% at 15% 40%, rgba(255,46,147,0.28) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 85% 35%, rgba(0,229,255,0.24) 0%, transparent 55%)
     `,
   },
   {
     label: 'Silent Disco',
-    bg: `
-      radial-gradient(ellipse 80% 90% at 25% 60%, rgba(255,46,147,0.46) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 70% at 75% 40%, rgba(0,229,255,0.42) 0%, transparent 55%),
-      radial-gradient(ellipse 40% 50% at 50% 20%, rgba(123,44,191,0.28) 0%, transparent 55%),
-      #0A0612
+    image: '/hero/scene-5.webp',
+    overlay: `
+      radial-gradient(ellipse 80% 90% at 25% 60%, rgba(255,46,147,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 70% at 75% 40%, rgba(0,229,255,0.32) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 50% at 50% 20%, rgba(123,44,191,0.22) 0%, transparent 55%)
     `,
   },
   {
     label: 'After School',
-    bg: `
-      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(123,44,191,0.48) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 60% at 5% 50%, rgba(255,46,147,0.32) 0%, transparent 50%),
-      radial-gradient(ellipse 70% 60% at 95% 50%, rgba(0,229,255,0.32) 0%, transparent 50%),
-      #0A0612
+    image: '/hero/scene-6.webp',
+    overlay: `
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(123,44,191,0.36) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 60% at 5% 50%, rgba(255,46,147,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 60% at 95% 50%, rgba(0,229,255,0.25) 0%, transparent 50%)
     `,
   },
 ];
@@ -92,14 +92,33 @@ export function CinematicHero() {
       className="relative flex items-center justify-center"
       style={{ height: '100svh', overflow: 'clip' }}
     >
-      {/* Abstract gradient scenes — cycle through logo palette compositions */}
+      {/* Base dark layer */}
+      <div aria-hidden className="absolute inset-0" style={{ background: '#0A0612' }} />
+
+      {/* Scene layers: real photo darkened + neon gradient overlay */}
       {SCENES.map((scene, i) => (
         <div
           key={scene.label}
           aria-hidden
           className="absolute inset-0 transition-opacity duration-1000"
-          style={{ opacity: i === activeScene ? 1 : 0, background: scene.bg }}
-        />
+          style={{ opacity: i === activeScene ? 1 : 0 }}
+        >
+          {/* Photo background */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${scene.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.55,
+            }}
+          />
+          {/* Neon color overlay */}
+          <div
+            className="absolute inset-0"
+            style={{ background: scene.overlay }}
+          />
+        </div>
       ))}
 
       {/* Dark vignette — top/bottom fade keeps text crisp */}
@@ -120,7 +139,7 @@ export function CinematicHero() {
           className="font-display font-bold leading-[1.05] mb-6"
           style={{
             fontSize: 'var(--text-hero)',
-            fontFamily: "'Clash Display', Georgia, serif",
+            fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
             fontStyle: 'italic',
           }}
         >

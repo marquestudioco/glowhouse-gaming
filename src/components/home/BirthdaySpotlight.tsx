@@ -51,7 +51,7 @@ export function BirthdaySpotlight() {
             className="font-display font-bold italic mb-6"
             style={{
               fontSize: 'var(--text-display)',
-              fontFamily: "'Clash Display', Georgia, serif",
+              fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
               color: 'var(--neon-magenta)',
               textShadow: '0 0 40px rgba(255,46,147,0.4), 0 0 80px rgba(255,46,147,0.2)',
             }}

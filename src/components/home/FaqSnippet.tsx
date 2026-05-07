@@ -72,7 +72,7 @@ export function FaqSnippet() {
       <Container size="narrow">
         <div className="text-center mb-12">
           <Eyebrow color="cyan" className="mb-3">FAQ</Eyebrow>
-          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', Georgia, serif" }}>
+          <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
             Parent questions, answered
           </h2>
         </div>

@@ -54,7 +54,7 @@ export function CtaBand() {
         <div className="text-center">
           <h2
             className="font-display font-bold italic mb-4"
-            style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}
+            style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}
           >
             Ready to glow?
           </h2>

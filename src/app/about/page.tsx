@@ -59,7 +59,7 @@ export default function AboutPage() {
               <Eyebrow color="violet" className="mb-4">Our Story</Eyebrow>
               <h1
                 className="font-display font-bold mb-6"
-                style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}
+                style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}
               >
                 Born in Santa Clarita. Powered by passion.
               </h1>
@@ -102,7 +102,7 @@ export default function AboutPage() {
               <div key={label}>
                 <p
                   className="font-display font-bold mb-1"
-                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--neon-cyan)', fontFamily: "'Clash Display', Georgia, serif" }}
+                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--neon-cyan)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}
                 >
                   {value}
                 </p>
@@ -120,7 +120,7 @@ export default function AboutPage() {
             <Eyebrow color="cyan" className="mb-3">What We Believe</Eyebrow>
             <h2
               className="font-display font-bold"
-              style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', Georgia, serif" }}
+              style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}
             >
               Our values
             </h2>

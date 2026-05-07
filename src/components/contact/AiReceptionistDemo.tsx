@@ -32,7 +32,7 @@ export function AiReceptionistDemo() {
           🔧 Glowhouse Team Demo
         </div>
 
-        <h2 className="font-display font-bold text-xl text-[var(--text-light)] mb-2" style={{ fontFamily: "'Clash Display', Georgia, serif" }}>
+        <h2 className="font-display font-bold text-xl text-[var(--text-light)] mb-2" style={{ fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
           Try Your AI Receptionist
         </h2>
         <p className="text-sm text-[var(--text-dim)] mb-8 max-w-sm mx-auto">

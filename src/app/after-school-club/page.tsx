@@ -83,7 +83,7 @@ export default function AfterSchoolClubPage() {
               className="font-display font-bold italic mb-6"
               style={{
                 fontSize: 'var(--text-display)',
-                fontFamily: "'Clash Display', Georgia, serif",
+                fontFamily: "'Clash Display', var(--font-clash), Georgia, serif",
                 textShadow: '0 0 40px rgba(123,44,191,0.4)',
               }}
             >
@@ -125,7 +125,7 @@ export default function AfterSchoolClubPage() {
         <Container>
           <div className="text-center mb-14">
             <Eyebrow color="violet" className="mb-3">What We Offer</Eyebrow>
-            <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', Georgia, serif" }}>
+            <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
               More than just gaming
             </h2>
             <p className="text-[var(--text-dim)] mt-3 max-w-lg mx-auto">
@@ -152,7 +152,7 @@ export default function AfterSchoolClubPage() {
         <Container size="narrow">
           <div className="text-center mb-12">
             <Eyebrow color="magenta" className="mb-3">Daily Schedule</Eyebrow>
-            <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', Georgia, serif" }}>
+            <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
               What a typical day looks like
             </h2>
           </div>

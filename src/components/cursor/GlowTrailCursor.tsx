@@ -14,12 +14,9 @@ export function GlowTrailCursor() {
     const trail = trailRef.current;
     if (!dot || !trail) return;
 
-    dot.style.display   = 'block';
-    trail.style.display = 'block';
-
-    // Let GSAP own the full transform (xPercent/yPercent for centering + x/y for position)
-    gsap.set(dot,   { xPercent: -50, yPercent: -50, opacity: 0 });
-    gsap.set(trail, { xPercent: -50, yPercent: -50, opacity: 0 });
+    // Permanent centering — applied once on mount, never overridden
+    gsap.set(dot,   { xPercent: -50, yPercent: -50 });
+    gsap.set(trail, { xPercent: -50, yPercent: -50 });
 
     const dotX   = gsap.quickTo(dot,   'x', { duration: 0.08, ease: 'power3.out' });
     const dotY   = gsap.quickTo(dot,   'y', { duration: 0.08, ease: 'power3.out' });
@@ -30,14 +27,20 @@ export function GlowTrailCursor() {
     const onMouseMove = (e: MouseEvent) => {
       if (firstMove) {
         firstMove = false;
-        gsap.to(dot,   { opacity: 1, duration: 0.3 });
-        gsap.to(trail, { opacity: 0.5, duration: 0.3 });
+        // Snap to exact mouse position first so cursor doesn't slide in from a corner
+        gsap.set(dot,   { x: e.clientX, y: e.clientY });
+        gsap.set(trail, { x: e.clientX, y: e.clientY });
+        dot.style.display   = 'block';
+        trail.style.display = 'block';
+        gsap.fromTo(dot,   { opacity: 0 }, { opacity: 1,   duration: 0.25 });
+        gsap.fromTo(trail, { opacity: 0 }, { opacity: 0.5, duration: 0.25 });
       }
       dotX(e.clientX); dotY(e.clientY);
       trailX(e.clientX); trailY(e.clientY);
     };
 
     const onMouseOver = (e: MouseEvent) => {
+      if (firstMove) return;
       const el = (e.target as HTMLElement).closest('a, button, [data-magnetic]');
       if (el) {
         gsap.to(dot,   { scale: 2.5, duration: 0.2 });
@@ -45,6 +48,7 @@ export function GlowTrailCursor() {
       }
     };
     const onMouseOut = () => {
+      if (firstMove) return;
       gsap.to(dot,   { scale: 1, duration: 0.2 });
       gsap.to(trail, { scale: 1, opacity: 0.5, duration: 0.3 });
     };

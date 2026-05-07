@@ -23,7 +23,7 @@ export function AboutTeaser() {
             <Eyebrow color="violet" className="mb-3">Our Story</Eyebrow>
             <h2
               className="font-display font-bold mb-5"
-              style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', Georgia, serif", color: 'var(--text-dark)' }}
+              style={{ fontSize: 'var(--text-h2)', fontFamily: "'Clash Display', var(--font-clash), Georgia, serif", color: 'var(--text-dark)' }}
             >
               Born in Santa Clarita. Powered by passion.
             </h2>
