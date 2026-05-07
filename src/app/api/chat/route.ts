@@ -3,6 +3,20 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const MAX_TURNS = 12;
 
+// In-memory rate limiter: 30 requests per IP per 60 seconds
+const rateLimitMap = new Map<string, { count: number; reset: number }>();
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.reset) {
+    rateLimitMap.set(ip, { count: 1, reset: now + 60_000 });
+    return true;
+  }
+  if (entry.count >= 30) return false;
+  entry.count++;
+  return true;
+}
+
 const SYSTEM = `You are Sparks ⚡, the AI party concierge for Glowhouse Gaming — Santa Clarita's #1 gaming lounge and mobile entertainment company since 2017. You have helped plan 1,000+ parties and know every detail about the business.
 
 == CONTACT & HOURS ==
@@ -126,6 +140,11 @@ Then stop — don't ask more questions after the confirmation.
 - Match the energy: this is a FUN party company. Be enthusiastic but not overwhelming.`;
 
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+  }
+
   const body = await request.json().catch(() => null);
   if (!body?.messages) return NextResponse.json({ error: 'Missing messages' }, { status: 400 });
   if (body.messages.length > MAX_TURNS) return NextResponse.json({ error: 'Too many messages' }, { status: 400 });

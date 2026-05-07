@@ -45,6 +45,48 @@ export const viewport: Viewport = {
   themeColor: '#0A0612',
 };
 
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Glowhouse Gaming',
+  description: 'Glow-in-the-dark gaming lounge and mobile entertainment party service in Santa Clarita, CA.',
+  url: 'https://www.glowhousegaming.com',
+  telephone: '+18553484569',
+  priceRange: '$$',
+  image: 'https://www.glowhousegaming.com/og-image.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '25061 Avenue Stanford, Ste 40',
+    addressLocality: 'Santa Clarita',
+    addressRegion: 'CA',
+    postalCode: '91355',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 34.4208,
+    longitude: -118.5642,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+      opens: '08:00',
+      closes: '19:00',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: '100',
+    bestRating: '5',
+  },
+  sameAs: [
+    'https://www.instagram.com/glowhousegaming',
+    'https://www.facebook.com/glowhousegaming',
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning
@@ -52,6 +94,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <link rel="preload" as="image" href="/hero/scene-1.webp" fetchPriority="high" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
       </head>
       <body>
         <GlowTrailCursor />
