@@ -35,6 +35,11 @@ const GALLERY_IMAGES = [
   { src: '/gallery/photo-16.jpg',  alt: 'Glowhouse Gaming host on mic with LED headphones at an event',  aspect: 'landscape' },
   { src: '/gallery/photo-29.jpg',  alt: 'Full room of guests dancing at a Glowhouse holiday party',      aspect: 'landscape' },
   { src: '/gallery/photo-01.webp', alt: 'Kid experiencing VR in neon pink light',                        aspect: 'portrait'  },
+  // More events
+  { src: '/gallery/photo-30.jpg',  alt: 'Owner dancing with guests at a Glowhouse holiday party',        aspect: 'landscape' },
+  { src: '/gallery/photo-22.jpg',  alt: 'Glowhouse Gaming host on mic — Glowhouse logo sign behind',    aspect: 'landscape' },
+  { src: '/gallery/photo-28.jpg',  alt: 'Outdoor Lakers-themed gaming party with inflatable seating',    aspect: 'landscape' },
+  { src: '/gallery/photo-23.jpg',  alt: 'The Glowhouse Gaming team at a branded event',                  aspect: 'landscape' },
 ];
 
 export function PhotoMosaic({ showHeader = true }: { showHeader?: boolean }) {

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, MapPin, Clock } from 'lucide-react';
 import { SERVICES } from '@/lib/data/services';
 
@@ -27,9 +28,15 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           <div className="lg:col-span-1">
-            <p className="text-lg font-bold tracking-widest uppercase mb-3">
-              <span style={{ color: 'var(--neon-cyan)' }}>Glow</span>house Gaming
-            </p>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/logo-color.png"
+                alt="Glowhouse Gaming"
+                width={1268}
+                height={952}
+                style={{ height: '52px', width: 'auto' }}
+              />
+            </Link>
             <p className="text-sm text-[var(--text-dim)] leading-relaxed mb-4">
               Where birthdays go to glow. Santa Clarita's premier gaming lounge and mobile party service.
             </p>

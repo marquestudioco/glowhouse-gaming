@@ -50,36 +50,38 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero / Story */}
-      <section className="pt-32 pb-20" style={{ background: 'var(--bg-light)' }}>
+      <section className="pt-32 pb-20 relative overflow-clip" style={{ background: 'var(--bg-deep)' }}>
+        <div aria-hidden className="pointer-events-none absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 70% 60% at 70% 50%, rgba(123,44,191,0.12) 0%, transparent 65%)' }} />
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <div className="relative z-10">
               <Eyebrow color="violet" className="mb-4">Our Story</Eyebrow>
               <h1
                 className="font-display font-bold mb-6"
-                style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif", color: 'var(--text-dark)' }}
+                style={{ fontSize: 'var(--text-display)', fontFamily: "'Clash Display', Georgia, serif" }}
               >
                 Born in Santa Clarita. Powered by passion.
               </h1>
-              <p className="text-[var(--text-dark)] opacity-70 leading-relaxed mb-4 text-lg">
+              <p className="text-[var(--text-dim)] leading-relaxed mb-4 text-lg">
                 Glowhouse Gaming opened in 2017 with one mission: make group entertainment unforgettable. We started with a single lounge and a belief that the right atmosphere changes everything.
               </p>
-              <p className="text-[var(--text-dark)] opacity-70 leading-relaxed mb-4">
+              <p className="text-[var(--text-dim)] leading-relaxed mb-4">
                 Since then, we've hosted over 1,000 parties, launched 6 distinct service lines, and expanded to cover the entire Santa Clarita Valley with mobile experiences. Every event gets our full attention — from the game lineup to the lighting.
               </p>
-              <p className="text-[var(--text-dark)] opacity-70 leading-relaxed mb-8">
+              <p className="text-[var(--text-dim)] leading-relaxed mb-8">
                 Our team lives here. We know the valley, we know our clients, and we care deeply about every birthday, every corporate event, and every after-school afternoon we host.
               </p>
               <Link
                 href="/book"
-                className="inline-block px-8 py-3 rounded-full font-bold text-white"
-                style={{ background: 'var(--neon-violet)' }}
+                className="inline-block px-8 py-3 rounded-full font-bold text-white transition-all hover:scale-105"
+                style={{ background: 'linear-gradient(135deg, var(--neon-violet), var(--neon-magenta))', boxShadow: '0 0 20px rgba(123,44,191,0.4)' }}
                 data-magnetic
               >
                 Book with us
               </Link>
             </div>
-            <div className="relative aspect-square rounded-2xl overflow-hidden border border-black/10">
+            <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10" style={{ boxShadow: '0 0 48px rgba(123,44,191,0.15)' }}>
               <Image
                 src="/gallery/photo-23.jpg"
                 alt="Glowhouse Gaming team"
