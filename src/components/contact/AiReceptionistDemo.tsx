@@ -6,10 +6,12 @@ import { Phone, Loader2 } from 'lucide-react';
 export function AiReceptionistDemo() {
   const [phone,  setPhone]  = useState('');
   const [status, setStatus] = useState<'idle' | 'calling' | 'called' | 'error'>('idle');
+  const [debug,  setDebug]  = useState('');
 
   const handleCall = async () => {
     if (!phone.trim()) return;
     setStatus('calling');
+    setDebug('');
 
     try {
       const res = await fetch('/api/receptionist-call', {
@@ -17,7 +19,13 @@ export function AiReceptionistDemo() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone }),
       });
-      setStatus(res.ok ? 'called' : 'error');
+      if (res.ok) {
+        setStatus('called');
+      } else {
+        const data = await res.json().catch(() => ({})) as { debug?: string };
+        setDebug(data.debug ?? '');
+        setStatus('error');
+      }
     } catch {
       setStatus('error');
     }
@@ -64,7 +72,10 @@ export function AiReceptionistDemo() {
           <p className="mt-4 text-sm text-[var(--neon-cyan)]">✓ Call initiated — pick up in a moment!</p>
         )}
         {status === 'error' && (
-          <p className="mt-4 text-sm text-red-400">Call failed — try again or call (855) 348-4569.</p>
+          <div className="mt-4 text-sm text-red-400 text-left max-w-sm mx-auto">
+            <p className="font-semibold mb-1">Call failed:</p>
+            <pre className="text-xs whitespace-pre-wrap break-all">{debug || 'No error detail'}</pre>
+          </div>
         )}
 
         <p className="text-[10px] text-[var(--text-dim)]/50 mt-6">

@@ -2,21 +2,14 @@
 // Visitor enters their phone number on the site → we call them via ElevenLabs.
 // They experience the AI exactly as an inbound caller would.
 //
-// Required env vars (add to Cloudflare/Vercel dashboard):
-//   ELEVENLABS_API_KEY       — same key used for the chat widget
-//   GLOWHOUSE_AGENT_ID       — agent_7101kr1t1wkrfw5s27f4h1xvgmh8
-//   GLOWHOUSE_PHONE_NUMBER_ID — phnum_4401knzx9whqfsxtknrv42ex5z1b
+// Required env vars — store in .env (NOT wrangler secrets — see PREMIUM_STACK.md):
+//   ELEVENLABS_API_KEY         — Harvey's ElevenLabs account key (shared across sites)
+//   GLOWHOUSE_AGENT_ID         — agent_7101kr1t1wkrfw5s27f4h1xvgmh8
+//   GLOWHOUSE_PHONE_NUMBER_ID  — phnum_4401knzx9whqfsxtknrv42ex5z1b
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// Required for Cloudflare Workers — edge runtime silently ignores wrangler secrets via process.env
-export const runtime = 'nodejs';
-
-const AGENT_ID        = process.env.GLOWHOUSE_AGENT_ID ?? '';
-const PHONE_NUMBER_ID = process.env.GLOWHOUSE_PHONE_NUMBER_ID ?? '';
-const API_KEY         = process.env.ELEVENLABS_API_KEY ?? '';
-
-// 3 demo calls per IP per 10 minutes. Each call is capped at 4 min → ~12 min max exposure.
+// 3 demo calls per IP per 10 minutes. Each call capped at 4 min → ~12 min max exposure.
 const rateLimitMap = new Map<string, { count: number; reset: number }>();
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
@@ -36,6 +29,13 @@ function normalizePhone(raw: string): string | null {
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  // IMPORTANT: Read inside the handler, not at module level.
+  // On Cloudflare, .env values are embedded at build time and readable here.
+  // wrangler secrets are NOT readable via process.env — use .env instead.
+  const API_KEY         = process.env.ELEVENLABS_API_KEY        ?? '';
+  const AGENT_ID        = process.env.GLOWHOUSE_AGENT_ID        ?? '';
+  const PHONE_NUMBER_ID = process.env.GLOWHOUSE_PHONE_NUMBER_ID ?? '';
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
   if (!checkRateLimit(ip)) {
     return NextResponse.json({ error: 'Too many requests — please wait before requesting another call' }, { status: 429 });
@@ -57,7 +57,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 
   // Demo call is capped at 4 minutes to keep costs tight.
-  // The agent's default (15 min) is used for real inbound calls.
   const res = await fetch('https://api.elevenlabs.io/v1/convai/twilio/outbound-call', {
     method: 'POST',
     headers: { 'xi-api-key': API_KEY, 'Content-Type': 'application/json' },
@@ -68,16 +67,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       conversation_initiation_client_data: {
         conversation_config_override: {
           agent: {
-            first_message:
-              "Thanks for calling Glowhouse Gaming, this is Sparks! How can I help you today?",
+            first_message: "Thanks for calling Glowhouse Gaming, this is Sparks! How can I help you today?",
           },
           conversation: { max_duration_seconds: 240 },
           language_presets: {
             es: {
               overrides: {
                 agent: {
-                  first_message:
-                    "Gracias por llamar a Glowhouse Gaming, soy Sparks. ¿En qué te puedo ayudar hoy?",
+                  first_message: "Gracias por llamar a Glowhouse Gaming, soy Sparks. ¿En qué te puedo ayudar hoy?",
                 },
               },
             },
