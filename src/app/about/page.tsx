@@ -81,7 +81,7 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-square rounded-2xl overflow-hidden border border-black/10">
               <Image
-                src="/about/owner-team.webp"
+                src="/gallery/photo-23.jpg"
                 alt="Glowhouse Gaming team"
                 fill
                 className="object-cover"

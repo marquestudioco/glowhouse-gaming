@@ -4,7 +4,7 @@ import { type Service } from '@/lib/data/services';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Container } from '@/components/ui/Container';
 import { ServicePhotoGallery } from './ServicePhotoGallery';
-import { YouTubeEmbed } from './YouTubeEmbed';
+import { YouTubeHero } from './YouTubeHero';
 
 interface Props {
   service: Service;
@@ -40,44 +40,53 @@ export function ServiceSection({ service, index }: Props) {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          {/* Hero image */}
+          {/* Hero: video player when available, otherwise hero image */}
           <div className={isEven ? '' : 'lg:order-2'}>
-            <div
-              className="relative aspect-[4/3] rounded-2xl overflow-hidden"
-              style={{
-                boxShadow: `0 0 48px ${accentHex}22, 0 0 96px ${accentHex}0a, inset 0 0 0 1px ${accentHex}25`,
-              }}
-            >
-              <Image
-                src={service.heroImage}
-                alt={service.name}
-                fill
-                loading="lazy"
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+            {service.youtubeId ? (
+              <YouTubeHero
+                videoId={service.youtubeId}
+                thumbnail={service.heroImage}
+                accentHex={accentHex}
+                maxGuests={service.maxGuests}
+                duration={service.duration}
+                indoor={service.indoor}
+                mobileService={service.mobileService}
               />
-              {/* Gradient overlay — brand colour pools at bottom */}
+            ) : (
               <div
-                className="absolute inset-0"
-                style={{ background: `linear-gradient(to top, ${accentHex}50 0%, ${accentHex}10 35%, transparent 60%)` }}
-              />
-
-              {/* Stat badges — bottom of image */}
-              <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-sm text-white border border-white/10">
-                  👥 Up to {service.maxGuests.toLocaleString()}
-                </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-sm text-white border border-white/10">
-                  ⏱ {service.duration}
-                </span>
-                <span
-                  className="inline-flex items-center gap-1 text-[10px] font-medium px-2.5 py-1 rounded-full backdrop-blur-sm border"
-                  style={{ background: accentHex + '18', borderColor: accentHex + '40', color: accentHex }}
-                >
-                  {service.indoor ? '🏠 Indoor' : '🌙 Outdoor'}{service.mobileService ? ' · 🚐 Mobile' : ''}
-                </span>
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden"
+                style={{
+                  boxShadow: `0 0 48px ${accentHex}22, 0 0 96px ${accentHex}0a, inset 0 0 0 1px ${accentHex}25`,
+                }}
+              >
+                <Image
+                  src={service.heroImage}
+                  alt={service.name}
+                  fill
+                  loading="lazy"
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: `linear-gradient(to top, ${accentHex}50 0%, ${accentHex}10 35%, transparent 60%)` }}
+                />
+                <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-sm text-white border border-white/10">
+                    👥 Up to {service.maxGuests.toLocaleString()}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-sm text-white border border-white/10">
+                    ⏱ {service.duration}
+                  </span>
+                  <span
+                    className="inline-flex items-center gap-1 text-[10px] font-medium px-2.5 py-1 rounded-full backdrop-blur-sm border"
+                    style={{ background: accentHex + '18', borderColor: accentHex + '40', color: accentHex }}
+                  >
+                    {service.indoor ? '🏠 Indoor' : '🌙 Outdoor'}{service.mobileService ? ' · 🚐 Mobile' : ''}
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Text */}
@@ -140,16 +149,7 @@ export function ServiceSection({ service, index }: Props) {
           </div>
         </div>
 
-        {/* Video — full width below the two columns */}
-        {service.youtubeId && (
-          <YouTubeEmbed
-            videoId={service.youtubeId}
-            title="See it in action"
-            accentColor={service.accentColor}
-          />
-        )}
-
-        {/* Photo gallery — full width below */}
+        {/* Photo gallery — thumbnails below */}
         {service.gallery && service.gallery.length > 0 && (
           <ServicePhotoGallery
             photos={service.gallery}

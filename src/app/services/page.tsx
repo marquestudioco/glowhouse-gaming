@@ -3,7 +3,6 @@ import { SERVICES }          from '@/lib/data/services';
 import { ServiceSection }    from '@/components/services/ServiceSection';
 import { ServiceAreaMap }    from '@/components/services/ServiceAreaMap';
 import { GameLibraryFilter } from '@/components/services/GameLibraryFilter';
-import { PartyVanTour }      from '@/components/services/PartyVanTour';
 import { CtaBand }           from '@/components/home/CtaBand';
 import { Container }         from '@/components/ui/Container';
 import { Eyebrow }           from '@/components/ui/Eyebrow';
@@ -70,7 +69,6 @@ export default function ServicesPage() {
       ))}
 
       <GameLibraryFilter />
-      <PartyVanTour />
       <ServiceAreaMap />
       <CtaBand />
     </>

@@ -10,7 +10,7 @@ export function AboutTeaser() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden order-2 lg:order-1">
             <Image
-              src="/about/owner-team.webp"
+              src="/gallery/photo-23.jpg"
               alt="Glowhouse Gaming team"
               fill
               loading="lazy"

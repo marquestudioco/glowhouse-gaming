@@ -7,10 +7,10 @@ import { Container } from '@/components/ui/Container';
 import { Eyebrow }   from '@/components/ui/Eyebrow';
 
 const VAN_IMAGES = [
-  { src: '/van/exterior.webp',   caption: 'The Party Van — fully wrapped and ready to roll' },
-  { src: '/van/interior-1.webp', caption: 'Console gaming and neon atmosphere on board' },
-  { src: '/van/interior-2.webp', caption: 'Party space setup — screens, seating, and vibes' },
-  { src: '/van/lighting.webp',   caption: 'Full LED party lighting — every event glows' },
+  { src: '/gallery/photo-25.jpg', caption: 'The Party Van — fully lit and ready to roll up to your event' },
+  { src: '/van/exterior.webp',    caption: 'Glowhouse Gaming party van with mounted entertainment screen' },
+  { src: '/gallery/photo-16.jpg', caption: 'Your dedicated host keeps the energy high all night' },
+  { src: '/gallery/photo-11.jpg', caption: 'Every Glowhouse event = unforgettable moments' },
 ];
 
 export function PartyVanTour() {
@@ -25,7 +25,7 @@ export function PartyVanTour() {
         <div className="text-center mb-10">
           <Eyebrow color="violet" className="mb-3">Party Van</Eyebrow>
           <h2 className="font-display font-bold" style={{ fontSize: 'var(--text-h2)', fontFamily: 'var(--font-clash), Georgia, serif' }}>
-            Take a look inside
+            See it in action
           </h2>
         </div>
 

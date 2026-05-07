@@ -9,7 +9,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 const PANEL_PHOTOS: Record<string, string> = {
   'gaming-lounge':  '/lounge/kids-neon.jpg',
   'vr-rental':      '/vr/kid-vr-neon.jpg',
-  'outdoor-movies': '/gallery/photo-27.jpg',
+  'outdoor-movies': '/gallery/photo-24.jpg',
   'party-van':      '/gallery/photo-25.jpg',
   'silent-disco':   '/gallery/photo-13.jpg',
   'after-school':   '/gallery/photo-14.jpg',
