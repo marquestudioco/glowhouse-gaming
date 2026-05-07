@@ -11,6 +11,7 @@ import { AboutTeaser }               from '@/components/home/AboutTeaser';
 import { FeaturedGames }             from '@/components/home/FeaturedGames';
 import { FaqSnippet }                from '@/components/home/FaqSnippet';
 import { CtaBand }                   from '@/components/home/CtaBand';
+import { AiReceptionistDemo }        from '@/components/contact/AiReceptionistDemo';
 
 export const metadata: Metadata = {
   title: 'Glowhouse Gaming — Where Birthdays Go to Glow',
@@ -33,6 +34,7 @@ export default function Home() {
       <AboutTeaser />
       <FaqSnippet />
       <CtaBand />
+      <AiReceptionistDemo />
     </>
   );
 }

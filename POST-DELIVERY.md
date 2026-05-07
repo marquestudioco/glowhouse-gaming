@@ -12,24 +12,32 @@
 
 ---
 
-## Pricing Options to Present to Client
+## Pricing Structure
 
-### Option A — One-Time Handoff (clean exit)
-- Full site build, deployed, custom domain configured
-- 30-day post-launch support window included
-- Client gets GitHub repo, Cloudflare account credentials, and Decap CMS access
-- **Suggested price: $3,500–$5,000**
+### Step 1 — One-Time Website Fee (required to get the site)
+**Suggested: $3,000–$4,500**
 
-### Option B — Monthly Retainer (recommended)
+What's included:
+- Full 10-page custom Next.js site (Home, Services, Birthday, After School, Gallery, About, Contact, Book, Privacy, Terms)
+- AI chat widget (Sparks), 3-step booking wizard, horizontal scroll scrubber, cinematic hero
+- Decap CMS, Cloudflare Workers deployment, custom domain setup
+- Photo sourcing and optimization throughout
+- 30-day post-launch support window
+
+> $3,000 is easy-yes territory for a business doing $400/event × 1,000+ events.
+> $4,500 is still well within the value delivered. Price based on your read of the client.
+
+### Step 2 — Monthly Retainer (optional add-on, independent of the fee)
 | Item | Monthly |
 |------|---------|
-| Sparks AI Chat (Claude Haiku API costs + setup) | included |
-| AI Phone Receptionist (ElevenLabs/Vapi minutes + Harvey's number) | included |
+| Sparks AI Chat (Claude Haiku API costs) | included |
+| AI Phone Receptionist (ElevenLabs/Vapi minutes) | included |
 | Ongoing site updates (copy, images, new sections) | included |
 | Hosting (Cloudflare Workers free tier) | $0 |
 | **Total client charge** | **$650–750/month** |
 
-> Note: $500/month is the floor — margins get thin at moderate call volume. Price at $700 to be safe.
+> $500/month is the cost floor — margins thin out at moderate call volume. $700 is the safe price.
+> Retainer is completely optional. Client can go one-time and self-manage if they choose.
 
 ---
 
