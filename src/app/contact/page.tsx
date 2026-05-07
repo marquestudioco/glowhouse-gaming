@@ -4,7 +4,8 @@ import { Phone, MapPin, Clock } from 'lucide-react';
 import { Container }   from '@/components/ui/Container';
 import { Eyebrow }     from '@/components/ui/Eyebrow';
 import { FaqSnippet }  from '@/components/home/FaqSnippet';
-import { ContactForm } from '@/components/contact/ContactForm';
+import { ContactForm }          from '@/components/contact/ContactForm';
+import { AiReceptionistDemo }   from '@/components/contact/AiReceptionistDemo';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -102,6 +103,8 @@ export default function ContactPage() {
       <div id="faq">
         <FaqSnippet />
       </div>
+
+      <AiReceptionistDemo />
     </>
   );
 }

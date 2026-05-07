@@ -7,7 +7,7 @@ import { ServicePhotoGallery } from './ServicePhotoGallery';
 import { YouTubeHero } from './YouTubeHero';
 
 const BADGE_IMAGES: Partial<Record<string, string>> = {
-  'after-school': '/after-school/club-logo.png',
+  'after-school': '/after-school/club-logo-transparent.png',
 };
 
 interface Props {
