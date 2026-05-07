@@ -9,13 +9,13 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// 3 demo calls per IP per 10 minutes. Each call capped at 4 min → ~12 min max exposure.
+// 10 calls per IP per 10 minutes during testing (tighten to 3 before public launch)
 const rateLimitMap = new Map<string, { count: number; reset: number }>();
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
   const entry = rateLimitMap.get(ip);
   if (!entry || now > entry.reset) { rateLimitMap.set(ip, { count: 1, reset: now + 600_000 }); return true; }
-  if (entry.count >= 3) return false;
+  if (entry.count >= 10) return false;
   entry.count++;
   return true;
 }
