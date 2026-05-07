@@ -41,11 +41,27 @@ export function AiReceptionistDemo() {
         </div>
 
         <h2 className="font-display font-bold text-xl text-[var(--text-light)] mb-2" style={{ fontFamily: "'Clash Display', var(--font-clash), Georgia, serif" }}>
-          Try Your AI Receptionist
+          Your AI Receptionist — Live 24/7
         </h2>
-        <p className="text-sm text-[var(--text-dim)] mb-8 max-w-sm mx-auto">
-          Enter your number and hit Call — the AI will ring you and handle your call exactly as it would for a real customer.
+        <p className="text-sm text-[var(--text-dim)] mb-5 max-w-sm mx-auto">
+          Experience it yourself — enter your number and it calls you instantly, exactly as a real customer hears it.
         </p>
+
+        {/* Benefits */}
+        <ul className="text-left max-w-sm mx-auto mb-8 space-y-2">
+          {[
+            { icon: '📞', text: 'Picks up after ~5 rings — zero missed calls, any hour' },
+            { icon: '🌙', text: 'Live 24/7, including late-night planning from busy parents' },
+            { icon: '📅', text: 'Checks availability, answers package questions, guides callers to book' },
+            { icon: '🤖', text: 'Handles FAQs automatically — pricing, location, what to expect' },
+            { icon: '💰', text: 'One saved booking call covers the cost of the entire service' },
+          ].map(({ icon, text }) => (
+            <li key={text} className="flex items-start gap-2.5 text-sm text-[var(--text-dim)]">
+              <span className="shrink-0 mt-0.5">{icon}</span>
+              <span>{text}</span>
+            </li>
+          ))}
+        </ul>
 
         <div className="flex gap-2 max-w-sm mx-auto">
           <input
@@ -79,7 +95,7 @@ export function AiReceptionistDemo() {
         )}
 
         <p className="text-[10px] text-[var(--text-dim)]/50 mt-6">
-          For demo purposes only — not visible to customers on the live site.
+          Owner demo — customers reach the same AI by calling your business line.
         </p>
       </div>
     </section>

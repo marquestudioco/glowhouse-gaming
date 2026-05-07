@@ -66,7 +66,7 @@ export function ChatWidget() {
           aria-label="Chat with Sparks, our party concierge"
         >
           <MessageCircle size={18} />
-          <span className="text-sm">Chat with Sparks</span>
+          <span className="text-sm">Ask Sparks anything</span>
         </button>
       )}
 
@@ -80,7 +80,7 @@ export function ChatWidget() {
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-violet))' }}>S</div>
               <div>
                 <p className="text-sm font-semibold text-[var(--text-light)]">Sparks ⚡</p>
-                <p className="text-xs text-[var(--text-dim)]">Party concierge</p>
+                <p className="text-xs text-[var(--text-dim)]">AI concierge · answers instantly, 24/7</p>
               </div>
             </div>
             <button onClick={() => setOpen(false)} className="text-[var(--text-dim)] hover:text-[var(--text-light)] transition-colors" aria-label="Close chat">
