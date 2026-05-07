@@ -7,11 +7,11 @@ import { SERVICES, type Service } from '@/lib/data/services';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 
 const PANEL_PHOTOS: Record<string, string> = {
-  'gaming-lounge':  '/gallery/gaming-kids-neon.png',
-  'vr-rental':      '/vr/kid-vr-neon.jpg',
+  'gaming-lounge':  '/ai/gaming-neon.png',
+  'vr-rental':      '/ai/vr-neon.png',
   'outdoor-movies': '/gallery/photo-24.jpg',
   'party-van':      '/gallery/photo-25.jpg',
-  'silent-disco':   '/gallery/photo-13.jpg',
+  'silent-disco':   '/ai/disco-teens.png',
   'after-school':   '/gallery/photo-14.jpg',
 };
 

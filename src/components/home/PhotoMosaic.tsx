@@ -40,7 +40,10 @@ const GALLERY_IMAGES = [
   { src: '/gallery/photo-22.jpg',  alt: 'Glowhouse Gaming host on mic — Glowhouse logo sign behind',    aspect: 'landscape' },
   { src: '/outdoor/superbowl-setup.jpg', alt: 'Glowhouse outdoor Super Bowl event setup with big screen',        aspect: 'portrait'  },
   { src: '/gallery/photo-28.jpg',        alt: 'Outdoor Lakers-themed gaming party with inflatable seating',    aspect: 'landscape' },
-  { src: '/gallery/photo-23.jpg',  alt: 'The Glowhouse Gaming team at a branded event',                  aspect: 'landscape' },
+  { src: '/gallery/photo-23.jpg',        alt: 'The Glowhouse Gaming team at a branded event',                  aspect: 'landscape' },
+  { src: '/outdoor/movie-night.jpg',     alt: 'Glowhouse outdoor movie night — big screen, bean bags, and purple palm lighting', aspect: 'landscape' },
+  { src: '/lounge/lounge-branded.jpg',   alt: 'Guests gaming at the Glowhouse Gaming lounge under the GG logo', aspect: 'landscape' },
+  { src: '/lounge/glow-bar.jpg',         alt: 'Glowhouse Gaming branded photo wall and Glow Bar event setup',   aspect: 'landscape' },
 ];
 
 export function PhotoMosaic({ showHeader = true }: { showHeader?: boolean }) {
