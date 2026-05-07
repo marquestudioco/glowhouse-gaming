@@ -20,7 +20,6 @@ const GALLERY_IMAGES = [
   { src: '/gallery/photo-15.jpg',  alt: 'Professional DJ mixer with purple neon lighting',              aspect: 'portrait'  },
   { src: '/gallery/photo-18.jpg',  alt: 'Gaming with headphones in neon-lit Glowhouse lounge',         aspect: 'landscape' },
   { src: '/gallery/photo-24.jpg',  alt: 'Outdoor event setup with DJ tent and gaming screen',           aspect: 'landscape' },
-  { src: '/gallery/photo-26.jpg',  alt: 'Multi-screen gaming setup delivered to a home garage',         aspect: 'landscape' },
   // Venue & atmosphere
   { src: '/gallery/photo-03.jpg',  alt: 'Glowhouse lounge — "it\'s a vibe" neon sign',                 aspect: 'landscape' },
   { src: '/gallery/photo-04.jpg',  alt: 'Glowhouse venue with projector and neon pink lighting',        aspect: 'landscape' },
