@@ -28,8 +28,12 @@ npm run cf:build && npm run cf:deploy
 - Worker name in wrangler.toml: glowhouse-gaming — must not conflict with other Harvey sites
 - Account subdomain: marquestudio
 - Live URL: https://glowhouse-gaming.marquestudio.workers.dev
-- Production secrets: wrangler secret put KEY_NAME
 - Custom domain: Cloudflare dashboard → Workers → glowhouse-gaming → Domains & Routes
+
+**CRITICAL — env vars on Cloudflare:**
+All secrets go in `.env` (embedded at build time). Do NOT use `wrangler secret put` —
+wrangler secrets are NOT readable via process.env in Next.js routes on Cloudflare Workers.
+If a wrangler secret exists for the same key it blocks the .env value. See PREMIUM_STACK.md.
 
 **GitHub repo:** https://github.com/marquestudioco/glowhouse-gaming
 
@@ -99,26 +103,42 @@ npm run cf:build && npm run cf:deploy
 
 ## Environment Variables
 
-.env.local (never committed):
-  ANTHROPIC_API_KEY=
-  RESEND_API_KEY=
-  OWNER_NOTIFY_EMAIL=
+`.env` (gitignored, never committed — embedded at build time):
+  ANTHROPIC_API_KEY=          # Harvey's shared key — powers Sparks chat
+  ELEVENLABS_API_KEY=         # Harvey's shared key — powers AI receptionist
+  GLOWHOUSE_AGENT_ID=         # Site-specific — ElevenLabs agent for this client
+  GLOWHOUSE_PHONE_NUMBER_ID=  # Site-specific — ElevenLabs phone number
+  RESEND_API_KEY=             # Harvey's shared key — contact form emails
+  OWNER_NOTIFY_EMAIL=         # Client's email for contact form notifications
+  CF_ANALYTICS_TOKEN=         # Site-specific — Cloudflare Web Analytics token
+
+All keys are currently set and working. After any .env change: npm run cf:build && npm run cf:deploy.
 
 ---
 
 ## Current State
 
-**Status:** deployed
-**Last completed:** Full site build — all pages, booking wizard, AI chat (Sparks), Decap CMS, deployed to Cloudflare
+**Status:** deployed and sent to client for review
 **Live URL:** https://glowhouse-gaming.marquestudio.workers.dev
-**Custom domain:** TBD — point glowhousegaming.com DNS to Cloudflare dashboard → Workers → glowhouse-gaming → Domains & Routes
-**Tests:** 23 Playwright E2E + 11 Vitest unit — all passing
-**Next up (owner actions):**
+**GitHub:** https://github.com/marquestudioco/glowhouse-gaming (branch: main, fully pushed)
+**Last session:** Visual polish, AI receptionist fully working, analytics live, favicon added
+
+**What's working:**
+  - All 10 pages built and deployed
+  - Sparks AI chat (Claude-powered) — working
+  - AI receptionist (ElevenLabs outbound call) — working, rate limit 10/10min (tighten to 3 before public launch: route.ts line 18)
+  - Cloudflare Web Analytics — beacon live, token set
+  - Branded favicon (neon G, cyan→magenta gradient)
+  - Booking wizard (3-step), contact form, gallery, all sections
+
+**Before public/custom domain launch (owner actions):**
   - Replace placeholder images with real photos (public/birthday/, public/van/, public/about/, public/gallery/)
   - Add real pricing to package data (src/lib/data/packages.ts)
-  - Set production secrets: `wrangler secret put ANTHROPIC_API_KEY` / `RESEND_API_KEY` / `OWNER_NOTIFY_EMAIL`
-  - Configure custom domain in Cloudflare dashboard
-  - Complete Decap CMS GitHub OAuth app (see public/admin/config.yml)
-**Known issues:**
-  - Booking form and chat widget work in demo mode without API keys (graceful fallback)
-  - Placeholder images (webp) — site renders correctly with fallback colors
+  - Set RESEND_API_KEY + OWNER_NOTIFY_EMAIL in .env → rebuild → redeploy (contact form emails)
+  - Tighten receptionist rate limit: src/app/api/receptionist-call/route.ts line 18 → change 10 to 3
+  - Configure custom domain: Cloudflare dashboard → Workers → glowhouse-gaming → Domains & Routes
+  - Point glowhousegaming.com DNS to that custom domain
+
+**Known non-issues (intentional):**
+  - Placeholder webp images — site renders correctly with fallback colors until real photos added
+  - Booking form works in demo mode without Resend key (graceful fallback, no emails sent)
