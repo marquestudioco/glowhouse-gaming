@@ -6,9 +6,6 @@ import { Container } from '@/components/ui/Container';
 import { ServicePhotoGallery } from './ServicePhotoGallery';
 import { YouTubeHero } from './YouTubeHero';
 
-const BADGE_IMAGES: Partial<Record<string, string>> = {
-  'after-school': '/after-school/club-logo-transparent.png',
-};
 
 interface Props {
   service: Service;
@@ -36,8 +33,6 @@ export function ServiceSection({ service, index }: Props) {
     : '#7B2CBF';
 
   const btnTextColor = accentHex === '#00E5FF' ? '#0A0612' : '#FFFFFF';
-  const badgeImage = BADGE_IMAGES[service.id];
-
   return (
     <section
       id={service.id}
@@ -78,17 +73,7 @@ export function ServiceSection({ service, index }: Props) {
                   className="absolute inset-0"
                   style={{ background: `linear-gradient(to top, ${accentHex}50 0%, ${accentHex}10 35%, transparent 60%)` }}
                 />
-                {badgeImage && (
-                  <div className="absolute top-4 right-4">
-                    <Image
-                      src={badgeImage}
-                      alt="After School Club — Glowhouse Gaming"
-                      width={110}
-                      height={110}
-                      className="drop-shadow-lg"
-                    />
-                  </div>
-                )}
+
                 <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
                   <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-sm text-white border border-white/10">
                     👥 Up to {service.maxGuests.toLocaleString()}
